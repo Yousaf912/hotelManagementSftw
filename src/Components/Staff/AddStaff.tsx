@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import  { useContext, useEffect,  useState } from 'react'
 import { Store } from '../ContexStore/Store';
 import { toast, ToastContainer } from 'react-toastify';
 import { sendData } from '../Firebase/FirebaseMethod';
 
 export default function AddStaff() {
-    const contx = useContext(Store);
+    
     const [staffId,setStaffId]=useState<any>();
     const [name, setname] = useState<any>();
     const [number, setNber] = useState<any>();
@@ -62,10 +62,7 @@ export default function AddStaff() {
             })
         }
     }
-    const handleTypeChange = () => {
-
-    }
-
+    
     return (
         <div style={{ backgroundColor: '#4790f0' }}>
             <div className={` p-4 text-white`} >

@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Store } from "../ContexStore/Store";
 import { IoIosPerson } from "react-icons/io";
-import { getData, removeData } from "../Firebase/FirebaseMethod";
+import { getData } from "../Firebase/FirebaseMethod";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import {  ToastContainer } from "react-toastify";
 
 export default function AllBookingList() {
   const data = useContext(Store)

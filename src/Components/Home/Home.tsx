@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import React, { useContext, useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import { auth } from '../Firebase/firebaseConfig';
 import { getData } from '../Firebase/FirebaseMethod';
 import { FaHouseCircleCheck } from "react-icons/fa6";
@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { BsHouseGearFill } from "react-icons/bs";
 import { BsFillHouseLockFill } from "react-icons/bs";
 import { Store } from '../ContexStore/Store';
-import Loader from '../../Loader';
-
 
 
 
@@ -72,12 +70,12 @@ export default function Home() {
         },
     ]
     const navigate = useNavigate();
-    getData('123').then((dta) => {
+    getData('123').then(() => {
     }).catch((er) => {
         console.log(er);
     })
     const crntuser = () => {
-        onAuthStateChanged(auth, (user: any) => {
+        onAuthStateChanged(auth, () => {
 
         })
     }

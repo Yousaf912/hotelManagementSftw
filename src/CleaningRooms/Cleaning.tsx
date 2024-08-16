@@ -1,16 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Components/ContexStore/Store';
-import { FaPlus } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
 
 
 
 export default function Cleaning() {
-  const navigate  =useNavigate();
   const data = useContext(Store);
   const [searchValue, setSearchValue] = useState('');
   const [availableRoom, setAvailableRoom] = useState([]);
-  const [loader,setloader]=useState(true)
+
 
   console.log(data.dat);
   

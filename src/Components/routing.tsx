@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import SignIn from "./SignIn/SIgnIn";
 import Signup from "./SignUp/SignUp";
-import Home from "./Home/Home";
 import App from "../App";
 
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect,  useState } from 'react';
 import style from './editRoom.module.css';
 import { Store } from '../ContexStore/Store';
 import { RxCross1 } from "react-icons/rx";
@@ -31,7 +31,6 @@ export default function EditRoom() {
         setDiscript(fnal.description)
       }
 
-
     }).catch((er) => {
       console.log(er);
     })
@@ -61,7 +60,7 @@ export default function EditRoom() {
   }
   const edit=(e:any)=>{
     e.preventDefault();
-    sendData('rooms',obj,obj.roomnumber).then((rs)=>{
+    sendData('rooms',obj,obj.roomnumber).then(()=>{
       alert('data edit')
       data.setShowEdit(!data.showEdit)
     }).catch((er)=>{

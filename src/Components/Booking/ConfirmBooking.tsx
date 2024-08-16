@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Store } from '../ContexStore/Store'
+import  {  useEffect, useState } from 'react'
 import { getData } from '../Firebase/FirebaseMethod';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function ConfirmBooking() {
-    const contx = useContext(Store);
+   
     const navigate = useNavigate();
     const [dat, setData] = useState<any>({});
     const num = useLocation();

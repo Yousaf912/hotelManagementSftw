@@ -19,7 +19,7 @@ function App() {
   const [delt,setDelt]=useState(false);
   const [editStaf,setEditStaf]=useState(false)
 
-  const [sh,setsh]=useState(false)
+
   
 
   const [showNavbar, setShowNavbar] = useState(window.innerWidth > 768);

@@ -1,15 +1,15 @@
-import React, { useRef } from 'react';
-import { Button, Form, Container } from 'react-bootstrap';
+import  { useRef } from 'react';
+
 import style from './SignIn.module.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosPerson } from "react-icons/io";
 import { TiLockClosed } from "react-icons/ti";
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import {  signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Firebase/firebaseConfig';
 import { toast, ToastContainer } from 'react-toastify';
 import { sendData } from '../Firebase/FirebaseMethod';
-import img from '../../assets/hotle bg.jpg'
+
 
 
 
@@ -19,20 +19,13 @@ const SignIn = () => {
     const password = useRef<any>('');
     const navigate = useNavigate();
 
-    const crntuser =()=>{
-        onAuthStateChanged(auth,(user:any)=>{
-            console.log(user);
-            
-        })
-    }
-
     const signIn = (e: any) => {
         e.preventDefault();
         const paswrd = password.current.value;
         const mal = mail.current.value;
         if (mal && paswrd != '') {
             signInWithEmailAndPassword(auth, mal, paswrd)
-                .then((rs) => {
+                .then(() => {
                     sendData('123',{
                         name:'jose',
                         mail:'jose@gmail.com'

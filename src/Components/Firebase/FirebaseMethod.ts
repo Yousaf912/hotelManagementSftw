@@ -5,7 +5,7 @@ import { database } from "./firebaseConfig";
 export const sendData = (name: any, data: any, id?: any,nam?:any) => {
     const reference = ref(database, nam ? `${name}/${id}/${nam}` :`${name}/${id}` );
     return set(reference, data)
-        .then((rs) => {
+        .then(() => {
             console.log('Data written successfully');
         })
         .catch((error) => {

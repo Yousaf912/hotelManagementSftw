@@ -1,13 +1,13 @@
-import  { useContext, useEffect, useState, } from 'react'
+import  { useContext} from 'react'
 import logo from '../../assets/images-removebg-preview.png';
 import style from './sidebar.module.css';
 import { GiGreenhouse } from "react-icons/gi";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { MdGroups } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import { SlMenu } from "react-icons/sl";
+
 import { CiBookmarkPlus } from "react-icons/ci";
-import { RxCross2 } from "react-icons/rx";
+
 import { Store } from '../ContexStore/Store';
 
 export default function Sidebar() {

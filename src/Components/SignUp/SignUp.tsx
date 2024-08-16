@@ -1,13 +1,13 @@
 
 import style from './Signup.module.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosPerson } from "react-icons/io";
 import { TiLockClosed } from "react-icons/ti";
 import { auth } from '../Firebase/firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 
 
@@ -21,7 +21,7 @@ const Signup = () => {
     const create = (e: any) => {
         e.preventDefault();
         if(mail.current.value && password.current.value != ''){
-            createUserWithEmailAndPassword(auth, mail.current.value, password.current.value).then((res) => {
+            createUserWithEmailAndPassword(auth, mail.current.value, password.current.value).then(() => {
                 toast.success('Account is Created');
                 mail.current.value = "";
                 password.current.value=""
