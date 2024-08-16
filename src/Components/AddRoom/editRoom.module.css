@@ -1,0 +1,24 @@
+.main{
+    background-blend-mode: color;
+    position: fixed;
+    top:-900px;
+    transition: transform ease 2s;
+    transition: 2s
+}
+.show{
+    background-blend-mode: darken;
+    background:rgba(3, 52, 120, 0.9);
+    position: fixed;
+    top:0;
+    transition: transform ease 2s;
+    transition: 2s
+}
+.cros{
+    float: right;
+    margin-right: 10px;
+    font-size: xx-large;
+}
+.cros:hover{
+    color:#bd9834 ;
+    cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.main{
+    background-color: #4790f0;
+}
+.inpt{
+    background-color: #023577;
+}
+.btn button{
+outline: none;
+background-color: #bd9834;
+color: white;
+border-radius: 10px;
+}

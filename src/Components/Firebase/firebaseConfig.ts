@@ -1,0 +1,23 @@
+// Import the functions you need from the Firebase SDKs
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getDatabase } from 'firebase/database';
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAAeAn0Bp-ZFLQwePW933NE-OzzRsjLIGU",
+  authDomain: "reacthakathon.firebaseapp.com",
+  projectId: "reacthakathon",
+  storageBucket: "reacthakathon.appspot.com",
+  messagingSenderId: "374324694281",
+  appId: "1:374324694281:web:5b2fa4f10cdd64551e17d8",
+  measurementId: "G-H12B2GXK0J"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+export const auth = getAuth(app);
+export const database = getDatabase(app);

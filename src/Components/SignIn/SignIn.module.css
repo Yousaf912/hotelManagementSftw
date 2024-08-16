@@ -1,0 +1,32 @@
+.signin {
+    background: url('../../assets/hotle bg.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.icn{
+    color: #173370;
+}
+.inpt{
+border: 1px solid #173370;
+color: #173370;
+margin-top: 20px;
+border-radius: 20px;
+padding-left: 8px;
+}
+.inpt input{
+    width: 90%;
+    background: none;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+.btn button{
+    background-color: #173370;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+}

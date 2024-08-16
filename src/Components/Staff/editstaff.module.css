@@ -1,0 +1,16 @@
+.hide {
+    background-blend-mode: color;
+    position: absolute;
+    background: rgba(3, 52, 120, 0.9);
+    top: -700px;
+    transition: 3s;
+}
+
+.show {
+    background-blend-mode: color;
+    position: absolute;
+    background: rgba(3, 52, 120, 0.9);
+    top: 0px;
+    transition: 3s;
+}
+
