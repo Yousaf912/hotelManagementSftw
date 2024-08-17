@@ -1,10 +1,8 @@
-// Import the functions you need from the Firebase SDKs
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from 'firebase/database';
 
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAAeAn0Bp-ZFLQwePW933NE-OzzRsjLIGU",
   authDomain: "reacthakathon.firebaseapp.com",
