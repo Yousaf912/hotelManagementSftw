@@ -14,6 +14,7 @@ export default function Addroom() {
     const [description, setDescription] = useState<any>();
     const [status, setStatus] = useState<any>();
     const [type, setType] = useState<any>();
+    const url = useRef<any>();
 
     const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setStatus(e.target.value);
@@ -49,6 +50,7 @@ export default function Addroom() {
             roomprice: price,
             roomtype: type,
             description: description,
+            url:url.current.value,
         };
       
         
@@ -68,6 +70,7 @@ export default function Addroom() {
                     setDescription('');
                     const newId = generateRoomId();
                     setRoomId(newId);
+                    url.current.value ='';
                 })
                 .catch((error) => {
                     console.error(error);
@@ -128,11 +131,16 @@ export default function Addroom() {
                                     <h6>Enter Price</h6>
                                     <input required value={price} onChange={(e)=>setPrice(e.target.value)} type="number" style={{ width: '100%' }} />
                                 </div>
+                                <div className='col-5'>
+                                    <h6>Pic Url</h6>
+                                    <input required ref={url}  type="text" style={{ width: '100%' }} />
+                                </div>
                             </div>
                             <div className='col-8 mt-3'>
                                 <h6>Enter Description</h6>
                                 <textarea value={description} required onChange={(e) => setDescription(e.target.value)} style={{ width: '100%' }} rows={5}></textarea>
                             </div>
+                            
                             <div className='d-flex'>
                                 <div className={`col-md-4 mt-4 ${style.btn} d-md-flex mx-auto`}>
                                     <button type="submit" className='px-5 py-2 border-0'>Add</button>

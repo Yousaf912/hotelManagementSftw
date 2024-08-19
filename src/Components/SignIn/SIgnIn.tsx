@@ -25,14 +25,11 @@ const SignIn = () => {
         const mal = mail.current.value;
         if (mal && paswrd != '') {
             signInWithEmailAndPassword(auth, mal, paswrd)
-                .then(() => {
-                    sendData('123',{
-                        name:'jose',
-                        mail:'jose@gmail.com'
-                    })
-                    navigate('/home')
-                }).catch(() => {
+                .then((res) => {
 
+                    navigate('/')
+                }).catch(() => {
+                    toast.error('Put Correct Login details')
                 })
         } else {
             toast.error('All Filed Are Required')

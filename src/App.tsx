@@ -18,7 +18,7 @@ function App() {
   const [priceStatus, setPriceStatus] = useState(false);
   const [delt,setDelt]=useState(false);
   const [editStaf,setEditStaf]=useState(false)
-
+  const [loginId,setLoginId]=useState();
 
   
 
@@ -64,7 +64,7 @@ function App() {
     setarrow(e)
   }
 
-  const obj = {editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
+  const obj = {loginId,setLoginId,editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
 
   return (
     <div className="container-fluid">

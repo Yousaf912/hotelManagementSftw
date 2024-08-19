@@ -1,0 +1,40 @@
+.ul li a{
+    color: white;
+
+}
+.ul li:hover a{
+    border-bottom: 1px solid #a37e4c;
+    margin-left: 5px;
+}
+.menu{
+    position: fixed;
+    background-color: rgba(163, 126, 76,0.9);
+    z-index: 1;
+    transform: scaleY(0);
+    transition: 2s;
+    transform-origin: top;
+}
+.show{
+    position: fixed;
+    background-color: rgba(163, 126, 76,0.9);
+    transition: 2s ;
+    transform: scaleY(1);
+}
+
+.profile{
+    position: fixed;
+    background-color:rgba(195, 160, 112,0.9);
+    transform: scaleY(0);
+    transition: 2s;
+    transform-origin: top;
+}
+.profileShow{
+    position: fixed;
+    background-color:rgba(195, 160, 112,0.9);
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: 2s;
+}
+.profileShow div:hover{
+    cursor: pointer;
+}

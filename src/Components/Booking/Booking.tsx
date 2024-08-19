@@ -85,7 +85,7 @@ export default function Booking() {
               <th scope="row">{val.roomnumber}</th>
               <td>{val.roomtype}</td>
               <td>{val.roomprice}</td> 
-              <td>{val.description}</td> 
+              <td>{`${val.description.slice(0,70)}......`}</td> 
               <td onClick={()=>bookit(val.roomnumber)}><FaPlus className='fs-4' style={{color:'#bd9834', cursor:'pointer'}}/> </td> 
             </tr>
           ))}

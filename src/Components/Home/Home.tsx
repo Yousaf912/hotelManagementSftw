@@ -69,6 +69,7 @@ export default function Home() {
 
         },
     ]
+    
     const navigate = useNavigate();
     getData('123').then(() => {
     }).catch((er) => {
