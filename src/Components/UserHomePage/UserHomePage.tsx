@@ -15,19 +15,18 @@ export default function UserHomePage() {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
-               
-               getData('userdata',user.uid).then((data)=>{
-                setUserInfo(data)
-                setIsLogin(true)
-               }).catch((er)=>{
-                console.log(er);
-               })
+                getData('userdata', user.uid).then((data) => {
+                    setUserInfo(data);
+                    setIsLogin(true);
+                }).catch((error) => {
+                    console.error(error);
+                });
             } else {
-                console.log('No user is logged in');
+                setIsLogin(false);
             }
         });
-
-    }, []);
+    }, [isLogin]);
+    
 
     
 

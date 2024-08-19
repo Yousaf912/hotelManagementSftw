@@ -22,17 +22,17 @@ export default function Header() {
         setShowAccount(!showAccount)
     }
 
+
     const logout = () => {
         const auth = getAuth();
-
         signOut(auth).then(() => {
             toast.success('SignOut Successfully');
-            contx.setIsLogin(false)
+            contx.setIsLogin(false);  
         }).catch(() => {
-            toast.error('Try again Later')
-
-        })
-    }
+            toast.error('Try again Later');
+        });
+    };
+    
 
     const [showNavbar, setShowNavbar] = useState(window.innerWidth > 768);
     const [showMenu, setShowMenu] = useState<boolean>(false);
