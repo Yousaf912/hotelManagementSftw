@@ -13,6 +13,7 @@ export default function EditRoom() {
   const [roomStatus,setRoomstatus]=useState();
   const [roomPrice,setRoomPrice]=useState();
   const [discrip,setDiscript]=useState();
+  const [url,setUrl]=useState();
 
 
   const hide = () => {
@@ -29,6 +30,7 @@ export default function EditRoom() {
         setRoomstatus(fnal.roomstatus);
         setRoomPrice(fnal.roomprice);
         setDiscript(fnal.description)
+        setUrl(fnal.url)
       }
 
     }).catch((er) => {
@@ -49,6 +51,9 @@ export default function EditRoom() {
   const chngDis =(e:any)=>{
     setDiscript(e.target.value)
   }
+  const chngurl=(e:any)=>{
+    setUrl(e.target.value)
+  }
   
   const obj ={
     roomid:romid,
@@ -56,8 +61,10 @@ export default function EditRoom() {
     roomtype:roomType,
     roomstatus:roomStatus,
     roomprice:roomPrice,
-    description:discrip
+    description:discrip,
+    url:url
   }
+
   const edit=(e:any)=>{
     e.preventDefault();
     sendData('rooms',obj,obj.roomnumber).then(()=>{
@@ -116,6 +123,10 @@ export default function EditRoom() {
             <div className=' col-5'>
               <h6>Enter Price</h6>
               <input required type="number" onChange={chngPrice} style={{ width: '100%' }} value={roomPrice} />
+            </div>
+            <div className=' col-5'>
+              <h6>Enter url</h6>
+              <input required type="text" onChange={chngurl} style={{ width: '100%' }} value={url} />
             </div>
 
           </div>

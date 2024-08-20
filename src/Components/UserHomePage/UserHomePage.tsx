@@ -8,29 +8,31 @@ import { getData } from "../Firebase/FirebaseMethod";
 import AvailabelRoom from "./AvaliableRoom/AvailabelRoom";
 
 export default function UserHomePage() {
-    const [userInfo,setUserInfo]=useState<any>({});
-    const [isLogin,setIsLogin]=useState(false);
+    const [allRooms, setAllRooms] = useState<any>([]);
+    const [statusChanged,setStc]=useState(false)
+    
 
+    
     useEffect(() => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                getData('userdata', user.uid).then((data) => {
-                    setUserInfo(data);
-                    setIsLogin(true);
-                }).catch((error) => {
-                    console.error(error);
-                });
-            } else {
-                setIsLogin(false);
+        getData('rooms').then((val: any) => {
+            if (val) {
+                const fnal = Object.values(val)
+                setAllRooms(fnal)
+            
+                
             }
-        });
-    }, [isLogin]);
+        }).catch((er) => {
+            console.log(er);
+        })
+    }, [])
+
+
+    
     
 
     
 
-    const obj = {isLogin,setIsLogin,userInfo}
+    const obj = {allRooms,statusChanged,setStc}
 
     return (
         <StoreTwo.Provider value={obj}>
@@ -39,6 +41,7 @@ export default function UserHomePage() {
                 <Header />
                 <Hero />
             </div>
+            
             <AvailabelRoom/>
         </StoreTwo.Provider>
     );

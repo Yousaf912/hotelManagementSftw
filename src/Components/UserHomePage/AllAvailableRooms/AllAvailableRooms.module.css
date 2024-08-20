@@ -1,0 +1,28 @@
+.card {
+    overflow: hidden;
+  }
+  
+  .cardimg {
+    transition: transform 1s ease-in-out;
+  }
+  
+  .card:hover .cardimg {
+    transform: scale(1.1); 
+  }
+  
+
+.serch input{
+width: 80%;
+border: none;
+outline: none;
+border-color: #bd883e;
+}
+.serch button{
+    background-color: #bd883e;
+    color: white;
+    border: none;
+    outline: none;
+}
+.serch{
+    border: 2px solid #bd883e;
+}

@@ -1,92 +1,48 @@
-import { useEffect, useState } from "react";
-import CenterElement from "./Components/centerdata/CenterElement"
-import { Store } from "./Components/ContexStore/Store"
-import Sidebar from "./Components/Sidebar/Sidebar"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getData } from "./Components/Firebase/FirebaseMethod";
+import UserHomePage from "./Components/UserHomePage/UserHomePage";
+import Admin from "./Admin";
+import { useEffect, useState } from "react";
+import { ComonStore } from "./Components/ContexStore/Store";
+import { useLocation } from "react-router-dom";
 
-function App() {
-  const [editlist, seteditList] = useState<any>();
-  const [showEdit, setShowEdit] = useState(false);
-  const [dat, setData] = useState<any>([]);
-  const [det, setDet] = useState<any>([]);
-  const [adata, setadata] = useState(0);
-  const [romNumFB, setRomNumFb] = useState('');
-  const [bookingData, setBookingdata] = useState();
-  const [booking, setBooking] = useState<any>({});
-  const [nestdli, setnestdli] = useState('');
-  const [arrow, setarrow] = useState('DashBoard');
-  const [priceStatus, setPriceStatus] = useState(false);
-  const [delt,setDelt]=useState(false);
-  const [editStaf,setEditStaf]=useState(false)
-  const [loginId,setLoginId]=useState();
-
+export default function App() {
+    const [userInfo, setUserInfo] = useState<any>(null);
+    const [isLogin, setIsLogin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [userUid,setUserUid]=useState<any>();
   
 
-  const [showNavbar, setShowNavbar] = useState(window.innerWidth > 768);
-  const handleResize = () => {
-    setShowNavbar(window.innerWidth > 575);
-  }
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                setUserUid(user.uid)
+                     getData('userdata', user.uid).then((res)=>{
+                        setUserInfo(res);
+                        setIsLogin(true);
+                    })
+                    if (user.email === 'admin@gmail.com') {
+                        setIsAdmin(true);
+                    } else {
+                        setIsAdmin(false);
+                    }
+            } else {
+                setIsLogin(false);
+                setIsAdmin(false);
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
-  const show=()=>{
+    const obj ={userInfo,isLogin,userUid}
 
-  }
-
-
-  useEffect(() => {
-    getData(`booking`).then((res) => {
-      setBooking(res)
-    }).catch((er) => {
-      console.log(er);
-
-    })
-  }, [bookingData])
-
-
-  useEffect(() => {
-    getData('rooms').then((data: any) => {
-      const finalData = Object.values(data);
-      setData(finalData);
-      setDet(finalData);
-    }).catch((er) => {
-      console.log(er);
-    });
-  }, [showEdit, adata,priceStatus ]);
-
-
-  const nstdli = (a: any) => {
-    setnestdli(a)
-  }
-  const starow = (e: any) => {
-    setarrow(e)
-  }
-
-  const obj = {loginId,setLoginId,editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
-
-  return (
-    <div className="container-fluid">
-      <div className="row">
-        <Store.Provider value={obj}>
-          <div className="d-flex justify-content-between">
-            {showNavbar ?
-              <div className="col-1 col-sm-4 col-md-3  col-lg-2 mt-2  ">
-                <Sidebar />
-              </div> :
-              <div onClick={show}>
-                menue
-              </div>}
-
-            <div className=" col-md-8 col-sm-7 col-lg-9  mt-2  ">
-              <CenterElement />
-            </div>
-          </div>
-        </Store.Provider>
-      </div>
-    </div>
-  )
+    return (
+        <ComonStore.Provider value={obj}>
+        <div>
+            {isLogin ? (isAdmin ? <Admin /> : <UserHomePage />) : <UserHomePage />}
+        </div>
+        </ComonStore.Provider>
+    );
 }
 
-export default App

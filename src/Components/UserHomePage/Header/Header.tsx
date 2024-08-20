@@ -3,7 +3,7 @@ import logo from '../../../assets/rani logo.png'
 import style from './header.module.css'
 import { FiMenu } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
-import { StoreTwo } from '../../ContexStore/Store';
+import { ComonStore, StoreTwo } from '../../ContexStore/Store';
 import { BsPersonCircle } from "react-icons/bs";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMdPerson } from "react-icons/io";
@@ -15,8 +15,9 @@ import { toast, ToastContainer } from 'react-toastify';
 
 
 export default function Header() {
-    const contx = useContext(StoreTwo);
+    const contx = useContext(ComonStore);
     const [showAccount, setShowAccount] = useState(false);
+    
 
     const profile = () => {
         setShowAccount(!showAccount)
@@ -52,6 +53,11 @@ export default function Header() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    
+const openProfile=()=>{
+navigate(`/profile/${contx.userUid}`)
+}
 
     return (
         <div className={``}>
@@ -90,7 +96,7 @@ export default function Header() {
                                             </div>
                                             <div className='d-flex'>
                                                 <IoMdPerson className='fs-4 me-2' />
-                                                <p>Account</p>
+                                                <p onClick={openProfile}>Account</p>
                                             </div>
                                         </div>
 

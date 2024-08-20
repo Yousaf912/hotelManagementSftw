@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import SignIn from "./SignIn/SIgnIn";
 import Signup from "./SignUp/SignUp";
-import App from "../App";
 import UserHomePage from "./UserHomePage/UserHomePage";
 import CustomerBooking from "./UserHomePage/CustomerBooking/CustomerBooking";
+import AllAvailAbleRooms from "./UserHomePage/AllAvailableRooms/AllAvailAbleRooms";
+import Amount from "./UserHomePage/CustomerBooking/AMountVoucher/Amount";
+import Admin from "../Admin";
+import App from "../App";
+import UserProfile from "./UserHomePage/UserProfile/UserProfile";
 
 
 export const AllRoutes = createBrowserRouter([
@@ -13,7 +17,7 @@ export const AllRoutes = createBrowserRouter([
     },
     {
         path:'/',
-        element:<UserHomePage/>
+        element:<App/>
     },
     {
         path:'/login',
@@ -21,58 +25,74 @@ export const AllRoutes = createBrowserRouter([
     },
     {
         path:'/home',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/addRoom',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/roomlist',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/booking',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/bookingDetails',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/booking/confirmDetails/:id',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/booking/confirmPrice/:id',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/booking/allBookings',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/customer/:id',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/addstaff',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/stafflist',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/staff/SingleSstaff/:type/:id',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/home/underCleanRooms',
-        element:<App/>
+        element:<Admin/>
     },
     {
         path:'/RoomBooking/:id',
         element:<CustomerBooking/>
+    },
+    {
+        path:'/AllRooms',
+        element:<AllAvailAbleRooms/>
+    },
+    {
+        path:'/AllRooms/RoomBooking/:id',
+        element:<CustomerBooking/>
+    },
+    {
+        path:'/AllRooms/RoomBooking/:id/:id/payamount',
+        element:<Amount/>
+    },
+    {
+        path:'/profile/:id',
+        element:<UserProfile/>
     },
 ])

@@ -1,21 +1,4 @@
-// export default function Elmnt() {
-//     const name = useContext(Store);
 
-    
-
-//     const obj: any = {
-//         'singlestudent':<SingleStudentDetail/>,
-//         'teachersinglepage':<TeacherDetailPage/>,
-        
-//     }
-
-//     const element = obj[name.singlepage] || obj[name.arrow] ||  obj[ name.nestdli ] ;
-
-
-//     return (
-//         <div>{element}</div>
-//     )
-// }
 
 
 import { useLocation } from 'react-router-dom'
@@ -53,7 +36,7 @@ export default function CenterElement() {
         'addstaff':<AddStaff/>,
         'stafflist':<StaffList/>,
         'SingleSstaff':<SingleStaff/>,
-        'home':<Home/>,
+        '':<Home/>,
         'underCleanRooms':<Cleaning/>
     }
     const element = obj[nstdName] || obj[name] || obj[name1]
