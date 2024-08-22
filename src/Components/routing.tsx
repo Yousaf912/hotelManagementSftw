@@ -129,6 +129,10 @@ export const AllRoutes = createBrowserRouter([
         element: <UserProfile />
     },
     {
+        path: '/profile/:id/orderfood/order/confirmorder/:id/:name',
+        element: <UserProfile />
+    },
+    {
         path: '/profile/:id/orderfood/orderList',
         element: <UserProfile />
     },
@@ -153,5 +157,6 @@ export const AllRoutes = createBrowserRouter([
         path: '/profile/:id/bookings/paymentslip/:room',
         element: <UserProfile />
     },
+    
 
 ])

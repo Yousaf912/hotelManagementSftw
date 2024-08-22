@@ -33,6 +33,8 @@ export default function UserProfile() {
         })
     },[])
 
+    
+
 
 
 const obj ={id,name,data,name2}
@@ -43,7 +45,7 @@ const obj ={id,name,data,name2}
             <HeaderTwo />
             <div className='d-md-flex mt-5 justify-content-between'>
                 {showSideBar &&
-                <div className="col-lg-2 col-md-3 border">
+                <div className="col-lg-2 col-md-3">
                     <SideBar  />
                 </div>}
                 <div className="col-12 col-md-9 col-lg-9">

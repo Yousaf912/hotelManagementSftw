@@ -2,10 +2,20 @@ import { useEffect, useState } from 'react'
 import style from '../Services/Services.module.css'
 import { getData } from '../../../../Firebase/FirebaseMethod'
 import Loader from '../../../../../Loader';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
+
 export default function OrderFood() {
   const [option, setoption] = useState<any>([]);
   const [allData, setAllData] = useState<any>([]);
-  const [food, setFood] = useState<any>([])
+  const [food, setFood] = useState<any>([]);
+  const navigate =useNavigate()
+  const location = useLocation();
+  const id =location.pathname.split('/')[2];
+  
+
+
 
   useEffect(() => {
     getData('foods').then((val: any) => {
@@ -28,7 +38,9 @@ export default function OrderFood() {
   }
 
 
-
+const confirm = (id2:any,name:any)=>{
+navigate(`/profile/${id}/orderfood/order/confirmorder/${id2}/${name}`)
+}
 
 
   return (
@@ -72,7 +84,7 @@ export default function OrderFood() {
 
                       <h5 className="card-title">{val.title}</h5>
                       <p className="card-text">{val.description.slice(0, 130)}</p>
-                      <a className="btn  mt-3" style={{ backgroundColor: '#bd883e', color: 'white' }}>Order</a>
+                      <a onClick={()=>confirm(val.id,val.name)} className="btn  mt-3" style={{ backgroundColor: '#bd883e', color: 'white' }}>Order</a>
                     </div>
                   </div>
                 )

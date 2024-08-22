@@ -62,13 +62,14 @@ export default function Complains() {
 
 
   return (
-    <div className={`${style.main} p-3 rounded-3`}>
+    <div className={`${style.main} p-3 rounded-3 mb-5`}>
+      <div className='bg-white p-3'>
       <ToastContainer />
-      <div className={`${style.heading} text-center text-white mb-5`}>
+      <div className={`${style.heading} text-center  mb-5`}>
         <h1>I have Complain</h1>
         <p>If you are facing any problem describe here we will resolve it as soon as possible</p>
       </div>
-      <div className={`  text-white d-flex flex-wrap justify-content-around align-items-center`}>
+      <div className={`  d-flex flex-wrap justify-content-around align-items-center`}>
 
         
 
@@ -88,6 +89,7 @@ export default function Complains() {
       </div>
       <div className='text-center'>
         <button onClick={send} className='btn text-white' style={{ backgroundColor: '#b47625' }}>Complain</button>
+      </div>
       </div>
     </div>
   )

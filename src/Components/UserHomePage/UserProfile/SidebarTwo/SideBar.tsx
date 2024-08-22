@@ -87,7 +87,7 @@ export default function SideBar() {
                 {data.map((val: any, i: any) => {
                     return (
                         <>
-                            <li key={i} onClick={() => go(val.link)} className={`${val.name.toLowerCase() == name ? style.active : style.li} d-flex ms-1 border mt-3 px-3 py-1 rounded-5 `} >
+                            <li key={i} onClick={() => go(val.link)} className={`${val.name.toLowerCase() == name ? style.active : style.li} d-flex ms-1  mt-3 px-3 py-1 rounded-5 `} >
                                 <div className='d-flex justify-content-around ' style={{ width: '100%' }}>
                                     {val.icon}
                                     {val.name}
@@ -97,8 +97,8 @@ export default function SideBar() {
 
                             {val.nstd && val.name.toLowerCase() == name &&
                                 <ul>
-                                    <li className={`${val.nstd.active1 == nstdName ? style.active : style.li}   border mt-3 px-4 py-1 rounded-5 `} onClick={() => go(val.nstd.link1)} >{val.nstd.name}</li>
-                                    <li className={`${val.nstd.active2 == nstdName ? style.active : style.li}  border mt-3 px-4 py-1 rounded-5 `} onClick={() => go(val.nstd.link2)}>{val.nstd.name2}</li>
+                                    <li className={`${val.nstd.active1 == nstdName ? style.active : style.li}    mt-3 px-4 py-1 rounded-5 `} onClick={() => go(val.nstd.link1)} >{val.nstd.name}</li>
+                                    <li className={`${val.nstd.active2 == nstdName ? style.active : style.li}   mt-3 px-4 py-1 rounded-5 `} onClick={() => go(val.nstd.link2)}>{val.nstd.name2}</li>
                                 </ul>}
                         </>
                     )

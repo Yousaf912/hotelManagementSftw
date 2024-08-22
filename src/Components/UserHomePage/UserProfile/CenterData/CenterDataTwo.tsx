@@ -9,11 +9,13 @@ import Slip from '../Components/AmountSLip/Slip';
 import ServicesList from '../Components/Services/ServicesList';
 import ComplainStatus from '../Components/Complains/ComplainStatus';
 import OrderList from '../Components/OrderFood/OrderList';
+import ConfirmFood from '../Components/OrderFood/ConfirmFood';
 
 export default function CenterDataTwo() {
 const location = useLocation();
 const name = location.pathname.split('/')[3];
 const name2 = location.pathname.split('/')[4];
+const name3 = location.pathname.split('/')[5];
 
 
 
@@ -27,8 +29,9 @@ const data:any = {
     'order':<OrderFood/>,
     'orderList':<OrderList/>,
     'paymentslip':<Slip/>,
+    'confirmorder':<ConfirmFood/>
 }
-const element = data[name2] || data[name] || <Profile/>
+const element = data[name3]|| data[name2] || data[name] || <Profile/>
 
 
   return (

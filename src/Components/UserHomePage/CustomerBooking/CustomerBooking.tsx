@@ -64,8 +64,8 @@ export default function CustomerBooking() {
 
 
 
-  const book = (e: any) => {
-    e.preventDefault();
+  const book = (url:any,type:any,dis:any) => {
+  
 
     const date = new Date();
     const day = date.getDate()
@@ -98,7 +98,10 @@ export default function CustomerBooking() {
         address: address.current.value,
         day:days.current.value,
         date:date2,
-        status:'unpaid'
+        status:'unpaid',
+        url,
+        type,
+        dis
       };
 
 
@@ -170,7 +173,7 @@ export default function CustomerBooking() {
               <div className='position-relative py-1 mb-3'>
                 <h3>Form Details</h3>
               </div>
-              <form action="">
+              <div>
                 <div className='d-flex flex-column'>
                   Name:
                   <input ref={name} placeholder='enter your full name' type="text" required />
@@ -202,9 +205,9 @@ export default function CustomerBooking() {
                   <textarea ref={address} placeholder='enter your address' rows={3} required />
                 </div>
                 <div className=' mt-5 mx-auto text-center  mb-5'>
-                  <button onClick={book} className='btn text-white' style={{ backgroundColor: '#bd883e' }}>Book this Room</button>
+                  <button onClick={()=>book(room.url,room.roomtype,room.description)} className='btn text-white' style={{ backgroundColor: '#bd883e' }}>Book this Room</button>
                 </div>
-              </form>
+              </div>
 
             </div>
 
