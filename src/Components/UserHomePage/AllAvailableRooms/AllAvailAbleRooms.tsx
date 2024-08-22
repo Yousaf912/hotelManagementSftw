@@ -3,7 +3,7 @@ import { getData } from '../../Firebase/FirebaseMethod'
 import Loader from '../../../Loader';
 import style from './AllAvailableRooms.module.css'
 import { useNavigate } from 'react-router-dom';
-import { StoreTwo } from '../../ContexStore/Store';
+import { ComonStore, StoreTwo } from '../../ContexStore/Store';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { IoArrowBackCircle } from "react-icons/io5";
@@ -15,9 +15,10 @@ export default function AllAvailAbleRooms() {
     const [loader, setLoader] = useState(true);
     const [data, setData] = useState<any>([])
     const navigate = useNavigate();
-    const contx = useContext(StoreTwo);
+    const contx = useContext(ComonStore);
     const [inputValue, setInputValue] = useState();
-    const [filterData, setFilterData] = useState<any>([])
+    const [filterData, setFilterData] = useState<any>([]);
+    const [id,setid]=useState();
 
 
     useEffect(() => {
@@ -36,8 +37,15 @@ export default function AllAvailAbleRooms() {
             console.log(er);
 
         })
-    }, [contx.isLogin,contx.changeStatus])
+    }, [contx.isLogin])
 
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user:any) => {
+            user && setid(user.uid)
+        });
+        return () => unsubscribe();
+    }, []);
 
 
 
@@ -45,7 +53,7 @@ export default function AllAvailAbleRooms() {
         const auth = getAuth();
         onAuthStateChanged(auth, (user: any) => {
             if (user) {
-                navigate(`/AllRooms/RoomBooking/${roomNumber}`);
+                navigate(`/AllRooms/RoomBooking/${roomNumber}/${id}`);
             } else {
                 toast.error(' First Login to your account')
             }

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Background from "./Background/Background";
 import Header from "./Header/Header";
 import Hero from "./Hero/Hero";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { StoreTwo } from "../ContexStore/Store";
 import { getData } from "../Firebase/FirebaseMethod";
 import AvailabelRoom from "./AvaliableRoom/AvailabelRoom";
+import AllAvailAbleRooms from "./AllAvailableRooms/AllAvailAbleRooms";
 
 export default function UserHomePage() {
     const [allRooms, setAllRooms] = useState<any>([]);
@@ -43,6 +43,7 @@ export default function UserHomePage() {
             </div>
             
             <AvailabelRoom/>
+            {/* <AllAvailAbleRooms/> */}
         </StoreTwo.Provider>
     );
 }

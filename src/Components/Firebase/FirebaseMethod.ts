@@ -5,8 +5,9 @@ import { ref as storageRef, uploadBytes, getDownloadURL, StorageReference } from
 import { storage } from "./firebaseConfig";
 
 
-export const sendData = (name: any, data: any, id?: any, nam?: any) => {
-    const reference = ref(database, nam ? `${name}/${id}/${nam}` : `${name}/${id}`);
+export const sendData = (name: any, data: any, id?: any, nam?: any,room?:any) => {
+    const reference = ref(database, room ?  `${name}/${id}/${nam}/${room}` : nam ? `${name}/${id}/${nam}` : `${name}/${id}`);
+
     return set(reference, data)
         .then(() => {
             console.log('Data written successfully');
@@ -48,9 +49,9 @@ export const removeData = (name: string, id: any, nm?: any) => {
 
 
 
-export const uploadImage = (file: File, path: string): Promise<string> => {
+export const uploadImage = (file: File, name:any, id:any,filename:any): Promise<string> => {
 
-    const storageReference: StorageReference = storageRef(storage, path);
+    const storageReference: StorageReference = storageRef(storage,`${name}/${id}/${filename}` );
 
     return uploadBytes(storageReference, file)
         .then(() => getDownloadURL(storageReference))

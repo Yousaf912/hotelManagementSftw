@@ -4,7 +4,6 @@ import Signup from "./SignUp/SignUp";
 import UserHomePage from "./UserHomePage/UserHomePage";
 import CustomerBooking from "./UserHomePage/CustomerBooking/CustomerBooking";
 import AllAvailAbleRooms from "./UserHomePage/AllAvailableRooms/AllAvailAbleRooms";
-import Amount from "./UserHomePage/CustomerBooking/AMountVoucher/Amount";
 import Admin from "../Admin";
 import App from "../App";
 import UserProfile from "./UserHomePage/UserProfile/UserProfile";
@@ -76,7 +75,7 @@ export const AllRoutes = createBrowserRouter([
         element:<Admin/>
     },
     {
-        path:'/RoomBooking/:id',
+        path:'/RoomBooking/:id/:id',
         element:<CustomerBooking/>
     },
     {
@@ -84,15 +83,36 @@ export const AllRoutes = createBrowserRouter([
         element:<AllAvailAbleRooms/>
     },
     {
-        path:'/AllRooms/RoomBooking/:id',
+        path:'/AllRooms/RoomBooking/:id/:id',
         element:<CustomerBooking/>
-    },
-    {
-        path:'/AllRooms/RoomBooking/:id/:id/payamount',
-        element:<Amount/>
     },
     {
         path:'/profile/:id',
         element:<UserProfile/>
     },
+    {
+        path:'/profile/:id/services',
+        element:<UserProfile/>
+    },
+    {
+        path:`/profile/:id/bookings/:room?`,
+        element:<UserProfile/>
+    },
+    {
+        path:'/profile/:id/orderfood',
+        element:<UserProfile/>
+    },
+    {
+        path:'/profile/:id/complains',
+        element:<UserProfile/>
+    },
+    {
+        path:'/profile/:id/profile',
+        element:<UserProfile/>
+    },
+    {
+        path:'/profile/:id/bookings/paymentslip/:room',
+        element:<UserProfile/>
+    },
+   
 ])

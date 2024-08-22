@@ -16,7 +16,7 @@ export default function AddStaff() {
 
 
     const generateRoomId = () => {
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
         let result = '';
 
         for (let i = 0; i < 8; i++) {

@@ -3,7 +3,7 @@ import { getData } from '../../Firebase/FirebaseMethod'
 import Loader from '../../../Loader';
 import style from './AvailableRoom.module.css'
 import { useNavigate } from 'react-router-dom';
-import { StoreTwo } from '../../ContexStore/Store';
+import { ComonStore, StoreTwo } from '../../ContexStore/Store';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import Heading from '../SmallComponent/Heading';
@@ -12,7 +12,7 @@ export default function AvailabelRoom() {
     const [loader, setLoader] = useState(true);
     const [data, setData] = useState<any>([])
     const navigate = useNavigate();
-    const contx = useContext(StoreTwo);
+    const contx = useContext(ComonStore);
 
 
     useEffect(() => {
@@ -30,16 +30,14 @@ export default function AvailabelRoom() {
             console.log(er);
 
         })
-    }, [contx.isLogin,contx.changeStatus])
-
-
+    }, [contx.isLogin])
 
 
     const book = (roomNumber: any) => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user: any) => {
             if (user) {
-                navigate(`/RoomBooking/${roomNumber}`);
+                navigate(`/AllRooms/RoomBooking/${roomNumber}/${contx.userUid}`);
             } else {
                 toast.error(' First Login to your account')
             }

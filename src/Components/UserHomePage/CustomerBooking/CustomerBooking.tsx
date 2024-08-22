@@ -1,26 +1,29 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { StoreTwo } from '../../ContexStore/Store'
+import { ComonStore, StoreTwo } from '../../ContexStore/Store'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { getData, sendData } from '../../Firebase/FirebaseMethod';
 import Loader from '../../../Loader';
 import Heading from '../SmallComponent/Heading';
 import style from './CustomerBooking.module.css'
-import Header from '../Header/Header';
-import BookingDetails from '../../Booking/BookingDetails';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function CustomerBooking() {
-  const contx = useContext(StoreTwo)
+  const contx = useContext(ComonStore)
   const navigate = useNavigate()
   const name = useRef<any>('');
   const cnic = useRef<any>(0);
   const number = useRef<any>(0);
   const email = useRef<any>('');
-  const person = useRef<any>(0);
+  const days = useRef<any>(0);
   const address = useRef<any>('');
   const location = useLocation();
-  const id = location.pathname.split('/')[3]||[2];
+  const id = location.pathname.split('/')[3];
+  const id2 = location.pathname.split('/')[4];
+ 
 
+  
+  
+  
 
   const [room, setRoom] = useState<any>({});
   const [loader, setLoader] = useState(true);
@@ -64,6 +67,12 @@ export default function CustomerBooking() {
   const book = (e: any) => {
     e.preventDefault();
 
+    const date = new Date();
+    const day = date.getDate()
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const date2 = `${day}/${month}/${year}`
+
     if (
       !name.current?.value ||
       !cnic.current?.value ||
@@ -87,23 +96,33 @@ export default function CustomerBooking() {
         cnic: cnic.current.value,
         number: number.current.value,
         address: address.current.value,
+        day:days.current.value,
+        date:date2,
+        status:'unpaid'
       };
 
 
       sendData('booking', obj, obj.roomnumber).then(() => {
-        changeStatus()
-        toast.success(`You Booked room ${obj.roomnumber}`);
-        name.current.value = '';
-        number.current.value = 0;
-        address.current.value = '';
-        cnic.current.value = 0;
-        email.current.value = '';
-        person.current.value = 0
-
-        setTimeout(() => {
-
-          navigate(`/AllRooms/RoomBooking/${id}/${obj.bookingid}/payamount`);
-        }, 5000);
+        sendData('userdata',obj,id2,'booking',obj.roomnumber).then(()=>{
+          changeStatus()
+          toast.success(`You Booked room ${obj.roomnumber}`);
+          name.current.value = '';
+          number.current.value = 0;
+          address.current.value = '';
+          cnic.current.value = 0;
+          email.current.value = '';
+          days.current.value = 0;
+          
+  
+          setTimeout(() => {
+  
+            navigate(`/profile/${id2}/bookings/${obj.roomnumber}`);
+          }, 5000);
+        }).catch((er)=>{
+          console.log(er);
+          
+        })
+       
       }).catch((er) => {
         console.log(er);
 
@@ -171,7 +190,7 @@ export default function CustomerBooking() {
                 <div className='d-flex justify-content-between  mt-3'>
                   <div className='d-flex flex-column '>
                     Number of days:
-                    <input ref={person} placeholder='enter days' type="number" required />
+                    <input ref={days} placeholder='enter days' type="number" required />
                   </div>
                   <div className='d-flex flex-column'>
                     Booking ID:
