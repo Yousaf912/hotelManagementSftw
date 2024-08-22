@@ -5,6 +5,8 @@ import { GiGreenhouse } from "react-icons/gi";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { MdGroups } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import { IoFastFoodOutline } from "react-icons/io5";
+
 
 import { CiBookmarkPlus } from "react-icons/ci";
 
@@ -53,6 +55,20 @@ export default function Sidebar() {
                 link2:'/home/stafflist'
             },
             icon:<MdGroups />,
+            arow: <IoIosArrowForward />,
+            arow2: <IoIosArrowDown />,
+            action: storObj.starow,
+            action2:storObj.nstdli,
+        },
+        {
+            name:'Food',
+            nested:{
+                add:'Add Food',
+                list:'List Food',
+                link1:'/home/addfood',
+                link2:'/home/foodlist'
+            },
+            icon:<IoFastFoodOutline />,
             arow: <IoIosArrowForward />,
             arow2: <IoIosArrowDown />,
             action: storObj.starow,

@@ -13,6 +13,7 @@ export default function UserProfile() {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
     const name = location.pathname.split('/')[3];
+    const name2 = location.pathname.split('/')[4];
     const [data,setData]=useState<any>({})
     
 
@@ -34,7 +35,7 @@ export default function UserProfile() {
 
 
 
-const obj ={id,name,data}
+const obj ={id,name,data,name2}
 
     return (
         <ProfileStore.Provider value={obj}>

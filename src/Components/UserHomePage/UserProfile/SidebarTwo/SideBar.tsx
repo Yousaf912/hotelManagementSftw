@@ -14,12 +14,13 @@ import { ProfileStore } from '../../../ContexStore/Store';
 
 export default function SideBar() {
     const contx = useContext(ProfileStore);
-    const id = contx.id
-    const location = useLocation();
-    const name = contx.name
-    
-    
-    const navigate =useNavigate()
+    const id = contx.id;
+    const name = contx.name;
+    const nstdName = contx.name2
+    console.log(name);
+
+
+    const navigate = useNavigate()
 
     const data = [
         {
@@ -30,7 +31,16 @@ export default function SideBar() {
         {
             name: 'Services',
             icon: <RiServiceLine className='fs-3 me-4' />,
-            link: `/profile/${id}/services`
+            link: `/profile/${id}/services`,
+            nstd: {
+                name: 'Request',
+                name2: 'Request Status',
+                link1: `/profile/${id}/services/request`,
+                active1: 'request',
+                link2: `/profile/${id}/services/myRequest`,
+                active2: 'myRequest'
+
+            }
         },
         {
             name: 'Bookings',
@@ -38,19 +48,37 @@ export default function SideBar() {
             link: `/profile/${id}/bookings`
         },
         {
-            name: 'Complians',
+            name: 'Complains',
             icon: <TbUserQuestion className='fs-3 me-4' />,
-            link: `/profile/${id}/complains`
+            link: `/profile/${id}/complains`,
+            nstd: {
+                name: 'Complain',
+                name2: 'Complain Status',
+                link1: `/profile/${id}/complains/complain`,
+                active1: 'complain',
+                link2: `/profile/${id}/complains/complainStatus`,
+                active2: 'complainStatus'
+
+            }
         },
         {
             name: 'OrderFood',
             icon: <IoFastFoodOutline className='fs-3 me-4' />,
-            link: `/profile/${id}/orderfood`
+            link: `/profile/${id}/orderfood`,
+            nstd: {
+                name: 'Order',
+                name2: 'Order Status',
+                link1: `/profile/${id}/orderfood/order`,
+                active1: 'order',
+                link2: `/profile/${id}/orderfood/orderList`,
+                active2: 'orderList'
+
+            }
         },
 
     ]
 
-    const go =(link:any)=>{
+    const go = (link: any) => {
         navigate(link)
     }
     return (
@@ -58,12 +86,21 @@ export default function SideBar() {
             <div>
                 {data.map((val: any, i: any) => {
                     return (
-                        <li key={i} onClick={()=>go(val.link)} className={`${val.name.toLowerCase() == name?style.active: style.li} d-flex ms-1 border mt-3 px-3 py-1 rounded-5 `} >
-                            <div className='d-flex justify-content-around ' style={{width:'100%'}}>
-                                {val.icon}
-                                {val.name}
-                            </div>
-                        </li>
+                        <>
+                            <li key={i} onClick={() => go(val.link)} className={`${val.name.toLowerCase() == name ? style.active : style.li} d-flex ms-1 border mt-3 px-3 py-1 rounded-5 `} >
+                                <div className='d-flex justify-content-around ' style={{ width: '100%' }}>
+                                    {val.icon}
+                                    {val.name}
+                                </div>
+
+                            </li>
+
+                            {val.nstd && val.name.toLowerCase() == name &&
+                                <ul>
+                                    <li className={`${val.nstd.active1 == nstdName ? style.active : style.li}   border mt-3 px-4 py-1 rounded-5 `} onClick={() => go(val.nstd.link1)} >{val.nstd.name}</li>
+                                    <li className={`${val.nstd.active2 == nstdName ? style.active : style.li}  border mt-3 px-4 py-1 rounded-5 `} onClick={() => go(val.nstd.link2)}>{val.nstd.name2}</li>
+                                </ul>}
+                        </>
                     )
                 })}
             </div>

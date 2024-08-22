@@ -7,3 +7,20 @@
 .selct select{
     width: 100%;
 }
+.disabled {
+    pointer-events: none; 
+    opacity: 0.5; 
+}
+
+.card {
+    overflow: hidden;
+  }
+  
+  .cardimg {
+    transition: transform 1s ease-in-out;
+  }
+  
+  .card:hover .cardimg {
+    transform: scale(1.1); 
+  }
+ 

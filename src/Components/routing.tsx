@@ -11,108 +11,147 @@ import UserProfile from "./UserHomePage/UserProfile/UserProfile";
 
 export const AllRoutes = createBrowserRouter([
     {
-        path:'/SignUp',
-        element:<Signup/>
+        path: '/SignUp',
+        element: <Signup />
     },
     {
-        path:'/',
-        element:<App/>
+        path: '/',
+        element: <App />
     },
     {
-        path:'/login',
-        element:<SignIn/>
+        path: '/login',
+        element: <SignIn />
     },
     {
-        path:'/home',
+        path: '/home',
+        element: <Admin />
+    },
+    {
+        path: '/home/addRoom',
+        element: <Admin />
+    },
+    {
+        path: '/home/roomlist',
+        element: <Admin />
+    },
+    {
+        path: '/home/booking',
+        element: <Admin />
+    },
+    {
+        path: '/home/bookingDetails',
+        element: <Admin />
+    },
+    {
+        path: '/home/booking/confirmDetails/:id',
+        element: <Admin />
+    },
+    {
+        path: '/home/booking/confirmPrice/:id',
+        element: <Admin />
+    },
+    {
+        path: '/home/booking/allBookings',
+        element: <Admin />
+    },
+    {
+        path: '/home/customer/:id',
+        element: <Admin />
+    },
+    {
+        path: '/home/addstaff',
+        element: <Admin />
+    },
+    {
+        path: '/home/stafflist',
+        element: <Admin />
+    },
+    {
+        path: '/home/staff/SingleSstaff/:type/:id',
+        element: <Admin />
+    },
+    {
+        path: '/home/underCleanRooms',
+        element: <Admin />
+    },
+    {
+        path:'/home/addfood',
         element:<Admin/>
     },
     {
-        path:'/home/addRoom',
+        path:'/home/foodlist',
         element:<Admin/>
     },
+
+
+
+
+
+
     {
-        path:'/home/roomlist',
-        element:<Admin/>
+        path: '/RoomBooking/:id/:id',
+        element: <CustomerBooking />
     },
     {
-        path:'/home/booking',
-        element:<Admin/>
+        path: '/AllRooms',
+        element: <AllAvailAbleRooms />
     },
     {
-        path:'/home/bookingDetails',
-        element:<Admin/>
+        path: '/AllRooms/RoomBooking/:id/:id',
+        element: <CustomerBooking />
     },
     {
-        path:'/home/booking/confirmDetails/:id',
-        element:<Admin/>
+        path: '/profile/:id',
+        element: <UserProfile />
     },
     {
-        path:'/home/booking/confirmPrice/:id',
-        element:<Admin/>
+        path: '/profile/:id/services',
+        element: <UserProfile />
     },
     {
-        path:'/home/booking/allBookings',
-        element:<Admin/>
+        path: '/profile/:id/services/request',
+        element: <UserProfile />
     },
     {
-        path:'/home/customer/:id',
-        element:<Admin/>
+        path: '/profile/:id/services/myRequest',
+        element: <UserProfile />
     },
     {
-        path:'/home/addstaff',
-        element:<Admin/>
+        path: `/profile/:id/bookings/:room?`,
+        element: <UserProfile />
     },
     {
-        path:'/home/stafflist',
-        element:<Admin/>
+        path: '/profile/:id/orderfood',
+        element: <UserProfile />
     },
     {
-        path:'/home/staff/SingleSstaff/:type/:id',
-        element:<Admin/>
+        path: '/profile/:id/orderfood/order',
+        element: <UserProfile />
     },
     {
-        path:'/home/underCleanRooms',
-        element:<Admin/>
+        path: '/profile/:id/orderfood/orderList',
+        element: <UserProfile />
+    },
+
+    {
+        path: '/profile/:id/complains',
+        element: <UserProfile />
     },
     {
-        path:'/RoomBooking/:id/:id',
-        element:<CustomerBooking/>
+        path: '/profile/:id/complains/complain',
+        element: <UserProfile />
     },
     {
-        path:'/AllRooms',
-        element:<AllAvailAbleRooms/>
+        path: '/profile/:id/complains/complainStatus',
+        element: <UserProfile />
     },
     {
-        path:'/AllRooms/RoomBooking/:id/:id',
-        element:<CustomerBooking/>
+        path: '/profile/:id/profile',
+        element: <UserProfile />
     },
     {
-        path:'/profile/:id',
-        element:<UserProfile/>
+        path: '/profile/:id/bookings/paymentslip/:room',
+        element: <UserProfile />
     },
-    {
-        path:'/profile/:id/services',
-        element:<UserProfile/>
-    },
-    {
-        path:`/profile/:id/bookings/:room?`,
-        element:<UserProfile/>
-    },
-    {
-        path:'/profile/:id/orderfood',
-        element:<UserProfile/>
-    },
-    {
-        path:'/profile/:id/complains',
-        element:<UserProfile/>
-    },
-    {
-        path:'/profile/:id/profile',
-        element:<UserProfile/>
-    },
-    {
-        path:'/profile/:id/bookings/paymentslip/:room',
-        element:<UserProfile/>
-    },
-   
+
 ])

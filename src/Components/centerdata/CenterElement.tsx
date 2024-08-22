@@ -15,6 +15,8 @@ import StaffList from '../Staff/StaffList';
 import SingleStaff from '../Staff/SingleStaff';
 import Home from '../Home/Home';
 import Cleaning from '../../CleaningRooms/Cleaning';
+import AddMeals from '../AddMeals/AddMeals';
+import ListOfMeals from '../AddMeals/ListOfMeals';
 
 export default function CenterElement() {
     const urlname = useLocation();
@@ -37,7 +39,9 @@ export default function CenterElement() {
         'stafflist':<StaffList/>,
         'SingleSstaff':<SingleStaff/>,
         '':<Home/>,
-        'underCleanRooms':<Cleaning/>
+        'underCleanRooms':<Cleaning/>,
+        'addfood':<AddMeals/>,
+        'foodlist':<ListOfMeals/>
     }
     const element = obj[nstdName] || obj[name] || obj[name1]
     

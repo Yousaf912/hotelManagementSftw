@@ -1,20 +1,26 @@
 .main {
-    color:white; 
+    color: white;
     background-color: rgba(0, 0, 0, 0.7);
     text-align: center;
     height: 500px;
 }
-.li{
+
+.li {
     background-color: #bd883e;
 }
 
-.li:hover{
-color: #bd883e;
-background-color: rgba(102, 98, 98, 0.5);
-border-color: #bd883e;
-}
-.active{
+.li:hover {
     color: #bd883e;
-background-color: rgba(102, 98, 98, 0.5);
-border-color: #bd883e;
+    background-color: rgba(102, 98, 98, 0.5);
+    border-color: #bd883e;
+}
+
+.active {
+    color: #bd883e;
+    background-color: rgba(102, 98, 98, 0.5);
+    border-color: #bd883e;
+}
+
+ul li {
+    list-style: none;
 }

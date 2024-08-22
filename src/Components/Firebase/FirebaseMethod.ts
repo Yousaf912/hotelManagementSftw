@@ -19,8 +19,8 @@ export const sendData = (name: any, data: any, id?: any, nam?: any,room?:any) =>
 };
 
 
-export const getData = (name: string, id?: any) => {
-    const reference = ref(database, id ? `${name}/${id}` : name);
+export const getData = (name: string, id?: any,name2?:any) => {
+    const reference = ref(database, name2?`${name}/${id}/${name2}` : id ? `${name}/${id}` :  name);
     return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
             const data = snapshot.val();

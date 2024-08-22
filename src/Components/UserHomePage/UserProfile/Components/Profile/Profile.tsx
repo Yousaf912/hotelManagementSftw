@@ -7,11 +7,12 @@ export default function Profile() {
   console.log(contx.data);
 
   return (
-    <div className='p-2 col-11' style={{backgroundColor:'rgba(0, 0, 0, 0.5)'}}>
-        <div className='text-center text-white mb-5'>
-          <h1>Personal Details of "{contx.data.name}" </h1>
-        </div>
-      <div className='d-flex align-items-center justify-content-around text-white'>
+    <div className='p-3 col-11' style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+      <div className='bg-white'>
+      <div className='text-center  mb-5 pt-3 '>
+        <h1 >Personal Details of "{contx.data.name}" </h1>
+      </div>
+      <div className='d-flex align-items-center justify-content-around '>
         <div className='col-4'>
           <img src={img} style={{ width: '100%' }} />
         </div>
@@ -39,6 +40,7 @@ export default function Profile() {
             </div>
           </>}
         </div>
+      </div>
       </div>
     </div>
   )

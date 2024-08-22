@@ -6,21 +6,30 @@ import BookingsTwo from '../Components/Bookings/Bookings';
 import Complains from '../Components/Complains/Complains';
 import OrderFood from '../Components/OrderFood/OrderFood';
 import Slip from '../Components/AmountSLip/Slip';
+import ServicesList from '../Components/Services/ServicesList';
+import ComplainStatus from '../Components/Complains/ComplainStatus';
+import OrderList from '../Components/OrderFood/OrderList';
 
 export default function CenterDataTwo() {
 const location = useLocation();
 const name = location.pathname.split('/')[3];
 const name2 = location.pathname.split('/')[4];
 
+
+
 const data:any = {
     'profile':<Profile/>,
-    'services':<Services/>,
+    'request':<Services/>,
+    'myRequest':<ServicesList/>,
     'bookings':<BookingsTwo/>,
-    'complains':<Complains/>,
-    'orderfood':<OrderFood/>,
-    'paymentslip':<Slip/>
+    'complain':<Complains/>,
+    'complainStatus':<ComplainStatus/>,
+    'order':<OrderFood/>,
+    'orderList':<OrderList/>,
+    'paymentslip':<Slip/>,
 }
-const element = data[name2] || data[name]
+const element = data[name2] || data[name] || <Profile/>
+
 
   return (
     <div>
