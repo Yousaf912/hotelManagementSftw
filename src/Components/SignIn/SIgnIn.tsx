@@ -8,7 +8,7 @@ import { TiLockClosed } from "react-icons/ti";
 import {  signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Firebase/firebaseConfig';
 import { toast, ToastContainer } from 'react-toastify';
-import { sendData } from '../Firebase/FirebaseMethod';
+
 
 
 
@@ -25,7 +25,7 @@ const SignIn = () => {
         const mal = mail.current.value;
         if (mal && paswrd != '') {
             signInWithEmailAndPassword(auth, mal, paswrd)
-                .then((res) => {
+                .then(() => {
 
                     navigate('/')
                 }).catch(() => {

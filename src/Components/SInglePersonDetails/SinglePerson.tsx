@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getData, removeData, sendData } from '../Firebase/FirebaseMethod';
 import { MdDeleteForever } from "react-icons/md";
-import { ComonStore, Store } from '../ContexStore/Store';
+import {  Store } from '../ContexStore/Store';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function SinglePerson() {
