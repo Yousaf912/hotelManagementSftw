@@ -27,7 +27,7 @@ export default function ComplainStatus() {
                     data.map((val: any, i: any) => {
                         return (
 
-                            <div  className={`${style.main} ${val.status == 'completed' && style.disabled}  p-3 mt-2 `}>
+                            <div key={i}  className={`${style.main} ${val.status == 'completed' && style.disabled}  p-3 mt-2 `}>
                                 <div className='bg-white p-3 d-flex justify-content-between align-items-center'>
                                     <div className=''>
                                         <h6 style={{color:'#b47625'}}>Complain Id:</h6>

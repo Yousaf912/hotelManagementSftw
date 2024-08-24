@@ -50,6 +50,9 @@ export default function AllOrders() {
 
   return (
     <>
+     <div className='text-center text-primary mt-4 mb-3'>
+        <h1>All Food Orders</h1>
+      </div>
       {allorders.length != 0 ?
         <div className='mb-5'>
           <ToastContainer/>

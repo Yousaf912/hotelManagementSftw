@@ -86,7 +86,7 @@ const handleSearch = (e: any) => {
             <th scope="col">Room #</th>
             <th scope="col">Booking Id</th>
             <th scope="col">Name</th>
-            <th scope="col">CheckIn Date</th>
+            <th scope="col">Payment Status</th>
             
             <th scope="col">About</th>
           </tr>
@@ -97,7 +97,9 @@ const handleSearch = (e: any) => {
               <th scope="row">{val.roomnumber}</th>
               <td>{val.bookingid}</td>
               <td>{val.name}</td>
-              <td>{val.checkIn}</td>
+              <td className={`  ${val.status == 'Paid' ? 'text-success':'text-danger'}`}>
+               <h4 className="">{val.status}</h4> 
+                </td>
 
               <td onClick={() => singlePerson(val.bookingid)}><IoIosPerson className='fs-4' style={{ color: '#bd9834', cursor: 'pointer' }} /> </td>
             </tr>

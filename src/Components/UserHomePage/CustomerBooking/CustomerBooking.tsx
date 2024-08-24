@@ -1,5 +1,5 @@
-import  { useContext, useEffect, useRef, useState } from 'react'
-import { ComonStore} from '../../ContexStore/Store'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { ComonStore } from '../../ContexStore/Store'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getData, sendData } from '../../Firebase/FirebaseMethod';
 import Loader from '../../../Loader';
@@ -55,11 +55,10 @@ export default function CustomerBooking() {
     })
   }, [contx.ruf]);
 
-  const changeStatus = () => {
-    const newobj = { ...room, roomstatus: 'booked' };
-    sendData('rooms', newobj, id)
+ 
 
-  }
+
+
 
 
 
@@ -107,24 +106,28 @@ export default function CustomerBooking() {
         roomstatus: 'Booked'
       };
 
+      const fnal = { ...room, roomstatus: 'Booked' }
+
 
       sendData('booking', obj, obj.roomnumber).then(() => {
         sendData('userdata', obj, id2, 'booking', obj.roomnumber).then(() => {
-          changeStatus()
+          sendData('rooms', fnal, fnal.roomnumber).then(() => {
+           
 
-          toast.success(`You Booked room ${obj.roomnumber}`);
-          name.current.value = '';
-          number.current.value = 0;
-          address.current.value = '';
-          cnic.current.value = 0;
-          email.current.value = '';
-          days.current.value = 0;
+            toast.success(`You Booked room ${obj.roomnumber}`);
+            name.current.value = '';
+            number.current.value = 0;
+            address.current.value = '';
+            cnic.current.value = 0;
+            email.current.value = '';
+            days.current.value = 0;
 
-          
-          setTimeout(() => {
 
-            navigate(`/profile/${id2}/bookings/${obj.roomnumber}`);
-          }, 2000);
+            setTimeout(() => {
+
+              navigate(`/profile/${id2}/bookings/${obj.roomnumber}`);
+            }, 2000);
+          })
         }).catch((er) => {
           console.log(er);
 

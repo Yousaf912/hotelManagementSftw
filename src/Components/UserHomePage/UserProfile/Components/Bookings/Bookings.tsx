@@ -4,7 +4,6 @@ import { ProfileStore } from '../../../../ContexStore/Store';
 import { getData, uploadImage } from '../../../../Firebase/FirebaseMethod';
 import Loader from '../../../../../Loader';
 import { FaDownload } from "react-icons/fa";
-import { IoEye } from "react-icons/io5";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -16,11 +15,7 @@ export default function BookingsTwo() {
   const navigate = useNavigate();
   const [file, setfile] = useState<any>();
   const location = useLocation();
-  const roomNumber: any = location.pathname.split('/')[4];
   const id = location.pathname.split('/')[2];
-  const [arr, setarr] = useState<any>([]);
-  const [allRooms, setAllRooms] = useState<any>([]);
-  const [status, setStatus] = useState()
 
 
   useEffect(() => {
@@ -44,7 +39,7 @@ export default function BookingsTwo() {
   const upload = () => {
     if (file) {
 
-      uploadImage(file, 'users', contx.id, 'paymentslip').then((rs) => {
+      uploadImage(file, 'users', contx.id, 'paymentslip').then(() => {
         toast.success('Payment Slip is submint');
         setfile('');
       }).catch((er) => {
@@ -64,11 +59,15 @@ export default function BookingsTwo() {
         <div>
           {roomdata.map((val: any, i: any) => {
             return (
-              <div key={i}>
+              <div  key={i}>
                 <ToastContainer />
                 <div>
+                  {val.status == 'Paid' ?
+                  <h6 className='text-success'>Payment Successfully Paid</h6>
+                  :
                   <h6 className={`${style.notifi}`}>Your Payment Slip is ready Please Download it and Pay amount</h6>
-                </div>
+                  }
+                  </div>
 
                 <div className={`${style.paymntdiv} border p-3 mt-3`}>
                   <div className='bg-white d-lg-flex  justify-content-between'>
@@ -87,9 +86,10 @@ export default function BookingsTwo() {
 
                       <div className='' >
                         <h6>Status</h6>
-                        <p className={`mt-3 px-2  border ${val.status == 'unpaid' ? 'bg-danger' : status === 'Pending' ? 'bg-warning' : 'bg-success'} `}>{val.status}</p>
+                        <p className={`mt-3 text-white px-3 py-1 rounded-2  border ${val.status == 'unpaid' ? 'bg-danger' : status === 'Pending' ? 'bg-warning' : 'bg-success'} `}>{val.status}</p>
                       </div>
-
+                      {val.status == 'Paid'?'':
+                      <>
                       <div className='' >
                         <h6 className='mb-3'>Download Slip</h6>
                         <div className='text-center '>
@@ -101,8 +101,7 @@ export default function BookingsTwo() {
                         <h6>Upload paid Slip</h6>
                         <input className={``} onChange={getfile} type="file" style={{ width: '100%' }} />
                         <button onClick={upload} className='btn btn-success ms-1 mt-1'>Submint</button>
-                      </div>
-
+                      </div></>}
                     </div>
 
                   </div>

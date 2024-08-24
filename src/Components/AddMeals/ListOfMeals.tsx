@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import style from '../../Components/UserHomePage/UserProfile/Components/Services/Services.module.css'
 import { getData } from '../Firebase/FirebaseMethod';
 import Loader from '../../Loader';
-import { useLocation, useNavigate } from 'react-router-dom';
+
 
 
 
@@ -10,9 +10,8 @@ export default function ListOfMeals() {
   const [option, setoption] = useState<any>([]);
   const [allData, setAllData] = useState<any>([]);
   const [food, setFood] = useState<any>([]);
-  const navigate =useNavigate()
-  const location = useLocation();
-  const id =location.pathname.split('/')[2];
+
+  
   
 
 
@@ -38,9 +37,7 @@ export default function ListOfMeals() {
   }
 
 
-const confirm = (id2:any,name:any)=>{
-navigate(`/profile/${id}/orderfood/order/confirmorder/${id2}/${name}`)
-}
+
 
 
   return (

@@ -9,7 +9,6 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa6";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { RiCustomerServiceFill } from "react-icons/ri";
-import { FaSackDollar } from "react-icons/fa6";
 
 
 

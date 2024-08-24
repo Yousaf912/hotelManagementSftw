@@ -1,12 +1,12 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import {  useEffect, useRef, useState } from 'react'
 import style from './Services.module.css'
-import { ComonStore } from '../../../../ContexStore/Store'
+
 import { useLocation } from 'react-router-dom';
 import { sendData } from '../../../../Firebase/FirebaseMethod';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function Services() {
-  const contx = useContext(ComonStore);
+ 
   const location = useLocation();
   const customerId = location.pathname.split('/')[2];
   const [serviceid, setserviceid] = useState<any>();

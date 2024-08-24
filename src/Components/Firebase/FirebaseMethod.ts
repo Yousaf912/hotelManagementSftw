@@ -66,9 +66,9 @@ export const uploadImage = (file: File, name:any, id:any,filename:any): Promise<
 };
 
 
-export const getImageURL = (name:any): Promise<string> => {
+export const getImageURL = (name:any,id:any,filename:any): Promise<string> => {
 
-    const storageReference: StorageReference = storageRef(storage, `${name}`);
+    const storageReference: StorageReference = storageRef(storage, `${name}/${id}/${filename}`);
 
     return getDownloadURL(storageReference)
         .then((downloadURL: string) => {

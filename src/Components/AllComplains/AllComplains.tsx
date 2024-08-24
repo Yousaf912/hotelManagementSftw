@@ -1,5 +1,5 @@
 
-import { useLocation, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import style from '../../Components/UserHomePage/UserProfile/Components/Services/Services.module.css'
 import { useEffect, useState } from 'react';
 import { getData, sendData } from '../Firebase/FirebaseMethod';
@@ -52,6 +52,9 @@ export default function AllComplains() {
 
   return (
     <>
+     <div className='text-center text-primary mt-4 mb-3'>
+        <h1>All Complains</h1>
+      </div>
       <ToastContainer />
       {
         data.length != 0 ?

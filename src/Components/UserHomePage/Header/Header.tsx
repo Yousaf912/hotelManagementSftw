@@ -3,7 +3,7 @@ import logo from '../../../assets/rani logo.png'
 import style from './header.module.css'
 import { FiMenu } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
-import { ComonStore, StoreTwo } from '../../ContexStore/Store';
+import { ComonStore} from '../../ContexStore/Store';
 import { BsPersonCircle } from "react-icons/bs";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMdPerson } from "react-icons/io";

@@ -19,7 +19,6 @@ export default function AllservicesRequest() {
       const arr: any[] = [];
       fnal.map((val: any) => {
         const c = Object.values(val)[0];
-        console.log(c);
         arr.push(c)
        
       });
@@ -62,11 +61,14 @@ export default function AllservicesRequest() {
   return (
     <>
       <ToastContainer />
+      <div className='text-center text-primary mt-4 mb-3'>
+        <h1>All Services Requests</h1>
+      </div>
       {
         data.length != 0 ?
           data.map((val: any, i: any) => {
 
-
+            
             return (
               <div key={i} className={` ${val.status == 'completed' && style.disabled}  p-3 mt-2 `} style={{ backgroundColor: '#4790f0' }}>
                 <div className='bg-white p-3 d-flex justify-content-between align-items-center'>

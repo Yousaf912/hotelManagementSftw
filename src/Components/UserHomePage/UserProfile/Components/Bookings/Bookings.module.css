@@ -4,3 +4,7 @@
 .paymntdiv{
     background-color: rgba(0, 0, 0, 0.5);
 }
+.hide{
+    opacity: 0.5;
+    cursor: none;
+}

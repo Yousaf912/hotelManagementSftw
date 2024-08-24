@@ -4,7 +4,7 @@ import UserHomePage from "./Components/UserHomePage/UserHomePage";
 import Admin from "./Admin";
 import { useEffect, useState } from "react";
 import { ComonStore } from "./Components/ContexStore/Store";
-import { useLocation } from "react-router-dom";
+
 
 export default function App() {
     const [userInfo, setUserInfo] = useState<any>(null);

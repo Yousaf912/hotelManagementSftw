@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import HeaderTwo from './Header/HeaderTwo'
 import SideBar from './SidebarTwo/SideBar'
-import { remove } from 'firebase/database'
 import { useLocation } from 'react-router-dom';
-import CenterElement from '../../centerdata/CenterElement';
 import CenterDataTwo from './CenterData/CenterDataTwo';
 import { ProfileStore } from '../../ContexStore/Store';
 import { getData } from '../../Firebase/FirebaseMethod';

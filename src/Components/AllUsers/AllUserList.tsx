@@ -38,8 +38,6 @@ export default function AllUserList() {
             {contx.allUsers.length != 0 ?
                 <>
                     {contx.allUsers.map((val: any, i: any) => {
-
-
                         return (
 
                             <div key={i} className="p-3 border mt-4 text-black col-12" style={{ backgroundColor: '#4790f0' }}>
@@ -61,6 +59,7 @@ export default function AllUserList() {
                                             <strong>User ID : </strong>
                                             {val.id}
                                         </div>
+                                        
                                     </div>
                                     <div className="col-sm-5 col-lg-3 ">
                                         {val.booking ?

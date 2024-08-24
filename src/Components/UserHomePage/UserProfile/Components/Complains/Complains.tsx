@@ -1,17 +1,16 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import {  useEffect, useRef, useState } from 'react'
 import style from '../Services/Services.module.css'
-import { ComonStore } from '../../../../ContexStore/Store'
 import { useLocation } from 'react-router-dom';
 import { sendData } from '../../../../Firebase/FirebaseMethod';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function Complains() {
-  const contx = useContext(ComonStore);
+
   const location = useLocation();
   const customerId = location.pathname.split('/')[2];
   const [serviceid, setserviceid] = useState<any>();
   const dis = useRef<any>();
-  const [service, setservice] = useState('');
+
 
 
   const serviceId = () => {
@@ -30,9 +29,7 @@ export default function Complains() {
     setserviceid(id)
   }, [])
 
-  const request = (e: any) => {
-    setservice(e.target.value)
-  }
+ 
 
   const send = () => {
 

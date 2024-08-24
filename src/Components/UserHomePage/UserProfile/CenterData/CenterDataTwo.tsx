@@ -31,7 +31,7 @@ const data:any = {
     'paymentslip':<Slip/>,
     'confirmorder':<ConfirmFood/>
 }
-const element = data[name3]|| data[name2] || data[name] || <Profile/>
+const element = data[name3]|| data[name2] || data[name] 
 
 
   return (

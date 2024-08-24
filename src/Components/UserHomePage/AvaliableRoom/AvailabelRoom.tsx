@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { getData } from '../../Firebase/FirebaseMethod'
 import Loader from '../../../Loader';
 import style from './AvailableRoom.module.css'
 import { useNavigate } from 'react-router-dom';
-import { ComonStore, StoreTwo } from '../../ContexStore/Store';
+import { ComonStore} from '../../ContexStore/Store';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import Heading from '../SmallComponent/Heading';

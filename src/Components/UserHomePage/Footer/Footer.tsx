@@ -1,4 +1,4 @@
-import logo from '../../../assets/rani logo.png'
+
 export default function Footer() {
     return (
         <div className='container-fluid text-white' style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>

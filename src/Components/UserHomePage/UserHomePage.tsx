@@ -5,7 +5,6 @@ import Hero from "./Hero/Hero";
 import { StoreTwo } from "../ContexStore/Store";
 import { getData } from "../Firebase/FirebaseMethod";
 import AvailabelRoom from "./AvaliableRoom/AvailabelRoom";
-import AllAvailAbleRooms from "./AllAvailableRooms/AllAvailAbleRooms";
 import AboutUs from "./about Us/AboutUs";
 import Footer from "./Footer/Footer";
 

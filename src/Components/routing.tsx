@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import SignIn from "./SignIn/SIgnIn";
 import Signup from "./SignUp/SignUp";
-import UserHomePage from "./UserHomePage/UserHomePage";
 import CustomerBooking from "./UserHomePage/CustomerBooking/CustomerBooking";
 import AllAvailAbleRooms from "./UserHomePage/AllAvailableRooms/AllAvailAbleRooms";
 import Admin from "../Admin";

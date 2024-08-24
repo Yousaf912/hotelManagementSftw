@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import CenterElement from "./Components/centerdata/CenterElement"
-import { ComonStore, Store } from "./Components/ContexStore/Store"
+import {  Store } from "./Components/ContexStore/Store"
 import Sidebar from "./Components/Sidebar/Sidebar"
 import { getData } from "./Components/Firebase/FirebaseMethod";
 
@@ -19,12 +19,46 @@ function Admin() {
   const [delt,setDelt]=useState(false);
   const [editStaf,setEditStaf]=useState(false)
   const [loginId,setLoginId]=useState();
-  
   const [allUsers,setAllUsers]=useState<any>([]);
-  const [allBookings,setAllBookings]=useState<any>([])
+  const [allBookings,setAllBookings]=useState<any>([]);
+
+  const [allOrders,setAllorders]=useState<any>([]);
+  const [allComplains,setAllcomplains]=useState<any>([]);
+  const [allServiceRequest,setAllServiceRequest]=useState<any>([])
 
 
   useEffect(()=>{
+
+    getData('order').then((order:any)=>{
+      const fnal = Object.values(order)
+      setAllorders(fnal)
+      getData('services').then((res: any) => {
+        const fnal = Object.values(res)
+        const arr: any[] = [];
+        fnal.map((val: any) => {
+          const c = Object.values(val)[0];
+          arr.push(c)
+         setAllServiceRequest(arr)         
+        });
+      })
+      getData('complains').then((res: any) => {
+        const fnal = Object.values(res)
+        const arr: any[] = [];
+        fnal.map((val: any) => {
+          const c = Object.values(val)[0];
+          arr.push(c)
+         setAllcomplains(arr)
+         console.log(arr.length);
+         
+        });
+      })
+
+      
+    })
+
+
+
+
     getData('userdata').then((val:any)=>{
         const fnal = Object.values(val)
         const b = fnal.filter((res:any)=>res.mail != 'admin@gmail.com');
@@ -80,7 +114,7 @@ function Admin() {
     setarrow(e)
   }
 
-  const obj = {allBookings,allUsers,loginId,setLoginId,editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
+  const obj = {allComplains,allServiceRequest,allOrders,allBookings,allUsers,loginId,setLoginId,editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
 
   return (
     <div className="container-fluid">
