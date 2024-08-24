@@ -1,6 +1,17 @@
-.main{
+
+.img{
     width: 100%;
-    height: 500px;
-    z-index: -1;
-   object-fit: cover;
+}
+.dv{
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.dv2{
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
+    width: 100%;
 }

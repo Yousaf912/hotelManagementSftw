@@ -18,6 +18,8 @@ export default function Header() {
     const contx = useContext(ComonStore);
     const [showAccount, setShowAccount] = useState(false);
     
+    
+    
 
     const profile = () => {
         setShowAccount(!showAccount)
@@ -59,8 +61,15 @@ const openProfile=()=>{
 navigate(`/profile/${contx.userUid}`)
 }
 
+const gocomplain = ()=>{
+navigate(`/profile/${contx.userUid}/complains/complain`)
+}
+const goservice = ()=>{
+navigate(`/profile/${contx.userUid}}/services/request`)
+}
+
     return (
-        <div className={``}>
+        <div className={``} id='home'>
             <ToastContainer />
             <div className="container  ">
                 <header className="d-flex flex-wrap align-items-center  justify-content-around justify-content-sm-between  py-3 mb-4 ">
@@ -72,14 +81,14 @@ navigate(`/profile/${contx.userUid}`)
 
                     {showNavbar ?
                         <>
-                            <ul className={`${style.ul} nav col-6 col-md-7 col-lg-5 mb-2 justify-content-center mb-md-0`}>
-                                <li><a href="#" className="nav-link px-2 ">Home</a></li>
+                            <ul className={`${style.ul} nav text-white col-6 col-md-7 col-lg-5 mb-2 justify-content-center mb-md-0`}>
+                                <li><a href="#home" className="nav-link px-2 ">Home</a></li>
                                 <li><a href="#" className="nav-link px-2">Contact Us</a></li>
-                                <li><a href="#" className="nav-link px-2">About</a></li>
+                                <li><a href="#about" className="nav-link px-2">About</a></li>
                                 {contx.isLogin &&
                                     <>
-                                        <li><a href="#" className="nav-link px-2">Complain</a></li>
-                                        <li><a href="#" className="nav-link px-2">Service</a></li>
+                                        <li onClick={gocomplain}><p className="mt-2 px-2">Complain</p></li>
+                                        <li onClick={goservice}><p  className=" mt-2 px-2">Service</p></li>
                                     </>}
                             </ul>
 
@@ -109,11 +118,11 @@ navigate(`/profile/${contx.userUid}`)
                             </button>
 
                             <ul className={`${showMenu ? style.show : style.menu}  text-center nav d-flex flex-column `}>
-                                <li><a href="#" className="nav-link text-white px-2 ">Home</a></li>
+                                <li><a href="#home" className="nav-link text-white px-2 ">Home</a></li>
                                 <li><a href="#" className="nav-link  text-white px-2">Contact Us</a></li>
-                                <li><a href="#" className="nav-link text-white  px-2">Complain</a></li>
-                                <li><a href="#" className="nav-link text-white  px-2">Service</a></li>
-                                <li><a href="#" className="nav-link text-white px-2">About</a></li>
+                                <li onClick={gocomplain}><p className=" text-white  px-2">Complain</p></li>
+                                <li onClick={goservice}><p className=" text-white  px-2">Service</p></li>
+                                <li><a href="#about" className="nav-link text-white px-2">About</a></li>
                             </ul>
                         </div>
 
