@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { ComonStore, StoreTwo } from '../../ContexStore/Store'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import  { useContext, useEffect, useRef, useState } from 'react'
+import { ComonStore} from '../../ContexStore/Store'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { getData, sendData } from '../../Firebase/FirebaseMethod';
 import Loader from '../../../Loader';
 import Heading from '../SmallComponent/Heading';
@@ -19,11 +19,12 @@ export default function CustomerBooking() {
   const location = useLocation();
   const id = location.pathname.split('/')[3];
   const id2 = location.pathname.split('/')[4];
- 
 
-  
-  
-  
+
+
+
+
+
 
   const [room, setRoom] = useState<any>({});
   const [loader, setLoader] = useState(true);
@@ -52,7 +53,7 @@ export default function CustomerBooking() {
         setRoom([])
       }
     })
-  }, []);
+  }, [contx.ruf]);
 
   const changeStatus = () => {
     const newobj = { ...room, roomstatus: 'booked' };
@@ -64,8 +65,8 @@ export default function CustomerBooking() {
 
 
 
-  const book = (url:any,type:any,dis:any) => {
-  
+  const book = (url: any, type: any, dis: any) => {
+
 
     const date = new Date();
     const day = date.getDate()
@@ -96,18 +97,21 @@ export default function CustomerBooking() {
         cnic: cnic.current.value,
         number: number.current.value,
         address: address.current.value,
-        day:days.current.value,
-        date:date2,
-        status:'unpaid',
+        day: days.current.value,
+        date: date2,
+        status: 'unpaid',
         url,
         type,
-        dis
+        dis,
+        customerid: id2,
+        roomstatus: 'Booked'
       };
 
 
       sendData('booking', obj, obj.roomnumber).then(() => {
-        sendData('userdata',obj,id2,'booking',obj.roomnumber).then(()=>{
+        sendData('userdata', obj, id2, 'booking', obj.roomnumber).then(() => {
           changeStatus()
+
           toast.success(`You Booked room ${obj.roomnumber}`);
           name.current.value = '';
           number.current.value = 0;
@@ -115,17 +119,17 @@ export default function CustomerBooking() {
           cnic.current.value = 0;
           email.current.value = '';
           days.current.value = 0;
+
           
-  
           setTimeout(() => {
-  
+
             navigate(`/profile/${id2}/bookings/${obj.roomnumber}`);
-          }, 5000);
-        }).catch((er)=>{
+          }, 2000);
+        }).catch((er) => {
           console.log(er);
-          
+
         })
-       
+
       }).catch((er) => {
         console.log(er);
 
@@ -140,7 +144,7 @@ export default function CustomerBooking() {
     <>
       <div className="container">
         <div className='col-12'>
-        <Heading smal={'Room Booking'} />
+          <Heading smal={'Room Booking'} />
         </div>
         <ToastContainer />
         {loader ?
@@ -170,46 +174,46 @@ export default function CustomerBooking() {
 
 
               <div className={`${style.romdetial} formdetials col-md-5 `}>
-              <div className='position-relative py-1 mb-3'>
-                <h3>Form Details</h3>
-              </div>
-              <div>
-                <div className='d-flex flex-column'>
-                  Name:
-                  <input ref={name} placeholder='enter your full name' type="text" required />
+                <div className='position-relative py-1 mb-3'>
+                  <h3>Form Details</h3>
                 </div>
-                <div className='d-flex flex-column mt-3'>
-                  CNIC Number:
-                  <input ref={cnic} placeholder='enter your CNIC' type="number" required />
-                </div>
-                <div className='d-flex flex-column mt-3'>
-                  Contact Number:
-                  <input ref={number} placeholder='enter your contact number' type="number" required />
-                </div>
-                <div className='d-flex flex-column mt-3'>
-                  Email Adress:
-                  <input ref={email} placeholder='enter your email adress' type="email" required />
-                </div>
-                <div className='d-flex justify-content-between  mt-3'>
-                  <div className='d-flex flex-column '>
-                    Number of days:
-                    <input ref={days} placeholder='enter days' type="number" required />
-                  </div>
+                <div>
                   <div className='d-flex flex-column'>
-                    Booking ID:
-                    <input type="text" value={bookingId} readOnly />
+                    Name:
+                    <input ref={name} placeholder='enter your full name' type="text" required />
+                  </div>
+                  <div className='d-flex flex-column mt-3'>
+                    CNIC Number:
+                    <input ref={cnic} placeholder='enter your CNIC' type="number" required />
+                  </div>
+                  <div className='d-flex flex-column mt-3'>
+                    Contact Number:
+                    <input ref={number} placeholder='enter your contact number' type="number" required />
+                  </div>
+                  <div className='d-flex flex-column mt-3'>
+                    Email Adress:
+                    <input ref={email} placeholder='enter your email adress' type="email" required />
+                  </div>
+                  <div className='d-flex justify-content-between  mt-3'>
+                    <div className='d-flex flex-column '>
+                      Number of days:
+                      <input ref={days} placeholder='enter days' type="number" required />
+                    </div>
+                    <div className='d-flex flex-column'>
+                      Booking ID:
+                      <input type="text" value={bookingId} readOnly />
+                    </div>
+                  </div>
+                  <div className='d-flex flex-column mt-3'>
+                    Address:
+                    <textarea ref={address} placeholder='enter your address' rows={3} required />
+                  </div>
+                  <div className=' mt-5 mx-auto text-center  mb-5'>
+                    <button onClick={() => book(room.url, room.roomtype, room.description)} className='btn text-white' style={{ backgroundColor: '#bd883e' }}>Book this Room</button>
                   </div>
                 </div>
-                <div className='d-flex flex-column mt-3'>
-                  Address:
-                  <textarea ref={address} placeholder='enter your address' rows={3} required />
-                </div>
-                <div className=' mt-5 mx-auto text-center  mb-5'>
-                  <button onClick={()=>book(room.url,room.roomtype,room.description)} className='btn text-white' style={{ backgroundColor: '#bd883e' }}>Book this Room</button>
-                </div>
-              </div>
 
-            </div>
+              </div>
 
 
             </div>

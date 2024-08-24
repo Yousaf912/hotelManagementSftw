@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Store } from "../ContexStore/Store";
 import { IoIosPerson } from "react-icons/io";
 import { getData } from "../Firebase/FirebaseMethod";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {  ToastContainer } from "react-toastify";
 
 export default function AllBookingList() {
@@ -11,6 +11,9 @@ export default function AllBookingList() {
   const [searchValue, setSearchValue] = useState('');
   const [allBooking, setAllBooking] = useState<any>([]);
   const [filteredBookings, setFilteredBookings] = useState<any>([]);
+  const location = useLocation();
+  const customerId = location.pathname.split('/')[4];
+  
 
 
   useEffect(() => {
@@ -23,23 +26,38 @@ export default function AllBookingList() {
     })
   }, [data.delt])
 
-  const handleSearch = (e: any) => {
-    const value = e.target.value.toLowerCase();
-    setSearchValue(value);
+ useEffect(()=>{
+const b =  allBooking.filter((res:any)=>res.customerid == customerId)
+   customerId ?
+   setFilteredBookings(b):
+   setFilteredBookings(allBooking)
+   
+},[allBooking])
 
-    if (value === '') {
-      setFilteredBookings(allBooking);
-    } else {
-      const filtered = allBooking.filter((val: any) =>
-        val.roomnumber.toLowerCase().includes(value) ||
-        val.bookingid.toLowerCase().includes(value) ||
-        val.roomid.toLowerCase().includes(value) ||
-        val.name.toLowerCase().includes(value) ||
-        val.checkIn.includes(value)
-      );
-      setFilteredBookings(filtered);
-    }
-  };
+const handleSearch = (e: any) => {
+  const value = e.target.value.toLowerCase();
+  setSearchValue(value);
+
+  if (value === '') {
+    setFilteredBookings(allBooking);
+  } else {
+    const filtered = allBooking.filter((val: any) => {
+      const roomnumber = val.roomnumber ? val.roomnumber.toLowerCase() : '';
+      const bookingid = val.bookingid ? val.bookingid.toLowerCase() : '';
+      const roomid = val.roomid ? val.roomid.toLowerCase() : '';
+      const name = val.name ? val.name.toLowerCase() : '';
+      const checkIn = val.checkIn ? val.checkIn.toLowerCase() : '';
+
+      return roomnumber.includes(value) ||
+             bookingid.includes(value) ||
+             roomid.includes(value) ||
+             name.includes(value) ||
+             checkIn.includes(value);
+    });
+    setFilteredBookings(filtered);
+  }
+};
+
 
 
   const singlePerson = (num: any) => {

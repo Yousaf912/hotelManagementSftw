@@ -6,6 +6,11 @@ import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { MdGroups } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { IoFastFoodOutline } from "react-icons/io5";
+import { FaUsers } from "react-icons/fa6";
+import { MdOutlineCleaningServices } from "react-icons/md";
+import { RiCustomerServiceFill } from "react-icons/ri";
+import { FaSackDollar } from "react-icons/fa6";
+
 
 
 import { CiBookmarkPlus } from "react-icons/ci";
@@ -73,18 +78,46 @@ export default function Sidebar() {
             arow2: <IoIosArrowDown />,
             action: storObj.starow,
             action2:storObj.nstdli,
-        }
+        },
+        {
+            name:'All Users',
+            link:'/home/allusers',
+            icon:<FaUsers/>,
+            action: storObj.starow,
+            action2:storObj.nstdli,
+        },
+        {
+            name:'All food Orders',
+            link:'/home/allorders',
+            icon:<IoFastFoodOutline />,
+            action: storObj.starow,
+            action2:storObj.nstdli,
+        },
+        {
+            name:'All Services Request',
+            link:'/home/allservicesrequests',
+            icon:<MdOutlineCleaningServices/>,
+            action: storObj.starow,
+            action2:storObj.nstdli,
+        },
+        {
+            name:'All Complains',
+            link:'/home/allcomplains',
+            icon:<RiCustomerServiceFill/>,
+            action: storObj.starow,
+            action2:storObj.nstdli,
+        },
+    
        
 
     ]
     return (
         <>
-            
             <div className={`${style.min} container border-0 rounded-4 p-2 `}>
                 
                 <div className="row">
                     <div className="text-center mb-3 mt-2" >
-                        <img src={logo} width={160} />
+                        <img src={logo} width={100} />
                     </div>
                     <ul className={`col-12 ${style.ulstyl}`}>
                         {data.map((val: any, i: any) => {

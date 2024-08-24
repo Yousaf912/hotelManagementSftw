@@ -17,6 +17,11 @@ import Home from '../Home/Home';
 import Cleaning from '../../CleaningRooms/Cleaning';
 import AddMeals from '../AddMeals/AddMeals';
 import ListOfMeals from '../AddMeals/ListOfMeals';
+import AllUserList from '../AllUsers/AllUserList';
+import AllOrders from '../AllOrders/AllOrders';
+import AllComplains from '../AllComplains/AllComplains';
+import AllservicesRequest from '../AllServicesRequest/AllservicesRequest';
+import AllPayments from '../AllPayments/AllPayments';
 
 export default function CenterElement() {
     const urlname = useLocation();
@@ -41,7 +46,12 @@ export default function CenterElement() {
         '':<Home/>,
         'underCleanRooms':<Cleaning/>,
         'addfood':<AddMeals/>,
-        'foodlist':<ListOfMeals/>
+        'foodlist':<ListOfMeals/>,
+        'allusers':<AllUserList/>,
+        'allorders':<AllOrders/>,
+        'allcomplains':<AllComplains/>,
+        'allservicesrequests':<AllservicesRequest/>,
+        'allpayments':<AllPayments/>
     }
     const element = obj[nstdName] || obj[name] || obj[name1]
     

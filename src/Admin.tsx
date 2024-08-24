@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CenterElement from "./Components/centerdata/CenterElement"
-import { Store } from "./Components/ContexStore/Store"
+import { ComonStore, Store } from "./Components/ContexStore/Store"
 import Sidebar from "./Components/Sidebar/Sidebar"
 import { getData } from "./Components/Firebase/FirebaseMethod";
 
@@ -19,6 +19,22 @@ function Admin() {
   const [delt,setDelt]=useState(false);
   const [editStaf,setEditStaf]=useState(false)
   const [loginId,setLoginId]=useState();
+  
+  const [allUsers,setAllUsers]=useState<any>([]);
+  const [allBookings,setAllBookings]=useState<any>([])
+
+
+  useEffect(()=>{
+    getData('userdata').then((val:any)=>{
+        const fnal = Object.values(val)
+        const b = fnal.filter((res:any)=>res.mail != 'admin@gmail.com');
+        setAllUsers(b)
+        b &&
+        b.map((ans:any)=>{
+        setAllBookings(ans.booking)
+        })
+    })
+},[])
 
   
 
@@ -64,7 +80,7 @@ function Admin() {
     setarrow(e)
   }
 
-  const obj = {loginId,setLoginId,editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
+  const obj = {allBookings,allUsers,loginId,setLoginId,editStaf,setEditStaf,delt,setDelt,priceStatus,setPriceStatus, starow, nstdli, arrow, nestdli, booking, bookingData, setBookingdata, romNumFB, setRomNumFb, setadata, editlist, seteditList, showEdit, setShowEdit, dat, setData, det, setDet }
 
   return (
     <div className="container-fluid">
@@ -79,7 +95,7 @@ function Admin() {
                 menue
               </div>}
 
-            <div className=" col-md-8 col-sm-7 col-lg-9  mt-2  ">
+            <div className=" col-md-8 col-sm-8 ms-sm-3 ms-md-0 col-lg-9  mt-2  ">
               <CenterElement />
             </div>
           </div>

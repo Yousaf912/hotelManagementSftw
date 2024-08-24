@@ -47,10 +47,11 @@ export default function Services() {
       toast.error('Please Select service')
     } else {
 
-      sendData('services', obj,obj.customerid).then(() => {
+      sendData('services', obj,obj.customerid,obj.serviceid).then(() => {
         sendData('userdata', obj,obj.customerid, 'services', obj.serviceid).then(() => {
           toast.success(`Request for ${obj.service} is send`);
           dis.current.value ='';
+          serviceId()
         }).catch((er) => {
           toast.error('Facing eror please try again')
           console.log(er);
@@ -63,12 +64,13 @@ export default function Services() {
 
 
   return (
-    <div className={`${style.main} p-3 rounded-3`}>
+    <div className={`${style.main} p-3 mb-5 rounded-3`}>
+      <div className='bg-white p-2 '>
       <ToastContainer />
-      <div className={`${style.heading} text-center text-white mb-5`}>
+      <div className={`${style.heading} text-center  mb-5`}>
         <h1>Request for Service</h1>
       </div>
-      <div className={`  text-white d-flex flex-wrap justify-content-between align-items-center`}>
+      <div className={`   d-flex flex-wrap justify-content-between align-items-center`}>
 
         <div className='d-flex flex-column col-lg-3'>
           <h6 > Please Select Service</h6>
@@ -100,6 +102,7 @@ export default function Services() {
       </div>
       <div className='text-center'>
         <button onClick={send} className='btn text-white' style={{ backgroundColor: '#b47625' }}> Request</button>
+      </div>
       </div>
     </div>
   )

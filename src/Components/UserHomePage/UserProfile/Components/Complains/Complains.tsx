@@ -46,10 +46,11 @@ export default function Complains() {
       toast.error('Please enter your complain')
     } else {
 
-      sendData('complains', obj,obj.customerid).then(() => {
+      sendData('complains', obj,obj.customerid,obj.serviceid).then(() => {
         sendData('userdata', obj,obj.customerid, 'complains', obj.serviceid).then(() => {
           toast.success(`Your Complain is send`);
           dis.current.value ='';
+        
         }).catch((er) => {
           toast.error('Facing eror please try again')
           console.log(er);
@@ -57,6 +58,7 @@ export default function Complains() {
       }).catch((er) => {
         console.log(er);
       })
+      
     }
   }
 

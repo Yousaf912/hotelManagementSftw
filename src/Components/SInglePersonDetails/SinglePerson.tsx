@@ -1,8 +1,8 @@
-import { useContext, useEffect,  useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getData, removeData, sendData } from '../Firebase/FirebaseMethod';
 import { MdDeleteForever } from "react-icons/md";
-import { Store } from '../ContexStore/Store';
+import { ComonStore, Store } from '../ContexStore/Store';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function SinglePerson() {
@@ -11,6 +11,7 @@ export default function SinglePerson() {
     const location = useLocation().pathname.split('/')[3];
     const [status, setStatus] = useState<any>('');
     const navigate = useNavigate();
+   
 
     useEffect(() => {
         getData('booking').then((val: any) => {
@@ -31,7 +32,7 @@ export default function SinglePerson() {
     }, []);
 
 
-    const deleteBooking = (fnal: any) => {
+    const deleteBooking = (fnal: any, customerid: any) => {
         data.setDelt(!data.delt)
         if (status == '') {
             toast.error('Select the Status')
@@ -52,11 +53,15 @@ export default function SinglePerson() {
             const fnlObj = obj[0]
             sendData('rooms', fnlObj, fnal).then(() => {
                 data.setDelt(!data.delt)
+
                 removeData('booking', fnal).then(() => {
-                    toast.success(`Booking of ${dat.name} is Deleted`);
-                    setTimeout(() => {
-                        navigate('/home/booking/allBookings')
-                    }, 5000)
+                    removeData('booking', fnal, customerid,'userdata').then(() => {
+                        
+                        toast.success(`Booking of ${dat.name} is Deleted`);
+                        setTimeout(() => {
+                            navigate('/home/booking/allBookings')
+                        }, 3000)
+                    })
                 }).catch(() => {
                 })
             }).catch((er) => {
@@ -65,6 +70,9 @@ export default function SinglePerson() {
 
         }
     };
+
+
+   
 
 
     return (
@@ -118,7 +126,7 @@ export default function SinglePerson() {
                         </div>
                         <div className=' justify-content-evenly col-6'>
                             <h5>Discription: </h5>
-                            <p>{dat.description}</p>
+                            <p>{dat.customerid}</p>
                         </div>
 
 
@@ -138,7 +146,7 @@ export default function SinglePerson() {
                 </div>
                 <div className=' '>
 
-                    <td onClick={() => deleteBooking(dat.roomnumber)}><MdDeleteForever className=' mt-4 fs-1' style={{ color: 'red', cursor: 'pointer' }} /> </td>
+                    <td onClick={() => deleteBooking(dat.roomnumber, dat.customerid)}><MdDeleteForever className=' mt-4 fs-1' style={{ color: 'red', cursor: 'pointer' }} /> </td>
                 </div>
             </div>
         </div>

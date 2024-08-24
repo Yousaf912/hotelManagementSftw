@@ -33,8 +33,8 @@ export const getData = (name: string, id?: any,name2?:any) => {
 };
 
 
-export const removeData = (name: string, id: any, nm?: any) => {
-    const reference = ref(database, `${name}/${id}/${nm}`);
+export const removeData = (name: string, number: any,customerid?:any,name2?:any) => {
+    const reference = ref(database,customerid? `${name2}/${customerid}/${name}/${number}`: `${name}/${number}`);
     return remove(reference)
         .then(() => {
             console.log('Data removed successfully');
@@ -66,9 +66,9 @@ export const uploadImage = (file: File, name:any, id:any,filename:any): Promise<
 };
 
 
-export const getImageURL = (path: string): Promise<string> => {
+export const getImageURL = (name:any): Promise<string> => {
 
-    const storageReference: StorageReference = storageRef(storage, path);
+    const storageReference: StorageReference = storageRef(storage, `${name}`);
 
     return getDownloadURL(storageReference)
         .then((downloadURL: string) => {

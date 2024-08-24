@@ -27,7 +27,7 @@ export default function ComplainStatus() {
                     data.map((val: any, i: any) => {
                         return (
 
-                            <div  className={`${style.main} ${val.status == 'Completed' && style.disabled}  p-3 mt-2 `}>
+                            <div  className={`${style.main} ${val.status == 'completed' && style.disabled}  p-3 mt-2 `}>
                                 <div className='bg-white p-3 d-flex justify-content-between align-items-center'>
                                     <div className=''>
                                         <h6 style={{color:'#b47625'}}>Complain Id:</h6>
@@ -40,7 +40,7 @@ export default function ComplainStatus() {
                                     </div>
                                     <div className=''>
                                         <h6 style={{color:'#b47625'}}>Status:</h6>
-                                        <h6 className={`${val.status == 'Submited' ? 'btn-danger' : val.status == 'Responed' ? 'btn-warning' : 'bg-success'} btn px-3 py-2 rounded-2 `}>{val.status}</h6>
+                                        <h6 className={`${val.status == 'Submited' ? 'btn-danger' : val.status == 'under process' ? 'btn-warning' : 'bg-success'} btn px-3 py-2 rounded-2 `}>{val.status}</h6>
                                     </div>
                                 </div>
                             </div>

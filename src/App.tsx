@@ -11,6 +11,7 @@ export default function App() {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [userUid,setUserUid]=useState<any>();
+    const[ruf,setRuf]=useState(false);
   
 
     useEffect(() => {
@@ -35,7 +36,7 @@ export default function App() {
         return () => unsubscribe();
     }, []);
 
-    const obj ={userInfo,isLogin,userUid}
+    const obj ={userInfo,isLogin,userUid,ruf,setRuf}
 
     return (
         <ComonStore.Provider value={obj}>

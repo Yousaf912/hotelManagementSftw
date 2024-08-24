@@ -23,12 +23,14 @@ const Signup = () => {
         const obj = {
             name:name.current.value,
             mail:mail.current.value,
-            password:password.current.value
+            password:password.current.value,
+            id:''
         }
         e.preventDefault();
         if (mail.current.value && password.current.value && name.current.value !== '') {
             createUserWithEmailAndPassword(auth, mail.current.value, password.current.value).then((rs) => {
                 const id =rs.user.uid;
+                obj.id = id;
                 toast.success('Account is Created');
                 sendData('userdata',obj,id).then(()=>{
 

@@ -51,7 +51,7 @@ export const AllRoutes = createBrowserRouter([
         element: <Admin />
     },
     {
-        path: '/home/booking/allBookings',
+        path: `/home/booking/allBookings/:id?`,
         element: <Admin />
     },
     {
@@ -80,6 +80,30 @@ export const AllRoutes = createBrowserRouter([
     },
     {
         path:'/home/foodlist',
+        element:<Admin/>
+    },
+    {
+        path:'/home/allusers',
+        element:<Admin/>
+    },
+    {
+        path:'/home/allbookings',
+        element:<Admin/>
+    },
+    {
+        path:'/home/allorders/:id?',
+        element:<Admin/>
+    },
+    {
+        path:'/home/allcomplains/:id?',
+        element:<Admin/>
+    },
+    {
+        path:'/home/allservicesrequests/:id?',
+        element:<Admin/>
+    },
+    {
+        path:'/home/allpayments/:id?',
         element:<Admin/>
     },
 
