@@ -18,9 +18,10 @@ export default function AllservicesRequest() {
       const fnal = Object.values(res)
       const arr: any[] = [];
       fnal.map((val: any) => {
-        const c = Object.values(val)[0];
-        arr.push(c)
-       
+        const c = Object.values(val);
+        arr.push(...c)
+        
+        
       });
       const filterd = arr.filter((res: any) => res.customerid == id)
       id ?
@@ -32,6 +33,7 @@ export default function AllservicesRequest() {
 
     })
   }, [])
+
 
 
 

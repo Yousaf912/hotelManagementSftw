@@ -36,7 +36,7 @@ export default function App() {
         return () => unsubscribe();
     }, []);
 
-    const obj ={userInfo,isLogin,userUid,ruf,setRuf}
+    const obj ={userInfo,isLogin,userUid,ruf,setRuf,setIsLogin}
 
     return (
         <ComonStore.Provider value={obj}>

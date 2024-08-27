@@ -48,7 +48,6 @@ function Admin() {
           const c = Object.values(val)[0];
           arr.push(c)
          setAllcomplains(arr)
-         console.log(arr.length);
          
         });
       })

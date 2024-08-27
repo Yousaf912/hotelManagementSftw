@@ -120,7 +120,6 @@ export default function Home() {
         crntuser
     ), [])
     
-console.log(available.length);
 
 
     return (

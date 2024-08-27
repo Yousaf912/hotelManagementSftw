@@ -1,5 +1,5 @@
 
-import {  useNavigate } from 'react-router-dom'
+import {  useLocation, useNavigate } from 'react-router-dom'
 import style from '../../Components/UserHomePage/UserProfile/Components/Services/Services.module.css'
 import { useEffect, useState } from 'react';
 import { getData, sendData } from '../Firebase/FirebaseMethod';
@@ -10,14 +10,23 @@ import { toast, ToastContainer } from 'react-toastify';
 export default function AllComplains() {
   const [data, setData] = useState<any>([]);
   const navigate = useNavigate();
+  const loaction = useLocation();
+  const id = loaction.pathname.split('/')[3];
 
   useEffect(() => {
     getData('complains').then((res: any) => {
       const fnal = Object.values(res)
-      const b: any = fnal[0];
-      const fnal2 = Object.values(b)
-
-      setData(fnal2)
+      const arr: any[] = [];
+      fnal.map((val: any) => {
+        const c = Object.values(val);
+        arr.push(...c)
+        
+        
+      });
+      const filterd = arr.filter((res: any) => res.customerid == id)
+      id ?
+        setData(filterd) :
+        setData(arr)
 
     }).catch((er) => {
       console.log(er);
@@ -63,13 +72,10 @@ export default function AllComplains() {
               <div key={i} className={` ${val.status == 'completed' && style.disabled}  p-3 mt-2 `} style={{ backgroundColor: '#4790f0' }}>
                 <div className='bg-white p-3 d-flex justify-content-between align-items-center'>
                   <div className=''>
-                    <h6 style={{ color: '#b47625' }}>Service Id:</h6>
+                    <h6 style={{ color: '#b47625' }}>Complain Id:</h6>
                     {val.serviceid}
                   </div>
-                  <div className=''>
-                    <h6 style={{ color: '#b47625' }}>Service Type:</h6>
-                    {val.service}
-                  </div>
+                 
                   <div className=''>
                     <h6 style={{ color: '#b47625' }}>Discription:</h6>
                     {val.description}

@@ -17,8 +17,9 @@ import { toast, ToastContainer } from 'react-toastify';
 export default function Header() {
     const contx = useContext(ComonStore);
     const [showAccount, setShowAccount] = useState(false);
-    
-    
+    const [showNavbar, setShowNavbar] = useState(window.innerWidth > 768);
+    const [showMenu, setShowMenu] = useState<boolean>(false);
+    const navigate = useNavigate()
     
 
     const profile = () => {
@@ -27,19 +28,21 @@ export default function Header() {
 
 
     const logout = () => {
+        console.log('Logout function triggered');
         const auth = getAuth();
-        signOut(auth).then(() => {
-            toast.success('SignOut Successfully');
-            contx.setIsLogin(false);  
-        }).catch(() => {
-            toast.error('Try again Later');
-        });
+        signOut(auth)
+            .then(() => {
+                toast.success('SignOut Successfully');
+                contx.setIsLogin(false);
+            })
+            .catch(() => {
+                toast.error('Try again Later');
+
+            });
     };
     
 
-    const [showNavbar, setShowNavbar] = useState(window.innerWidth > 768);
-    const [showMenu, setShowMenu] = useState<boolean>(false);
-    const navigate = useNavigate()
+    
 
     const login = () => {
         navigate('/login')
